@@ -22,6 +22,7 @@ packer.startup(function(use)
 	use 'romgrk/barbar.nvim'
 	use 'nvim-tree/nvim-web-devicons'
 	use 'nvim-lualine/lualine.nvim'
+	use 'mhinz/vim-startify'
 
 	-- utils
 	use 'lukas-reineke/indent-blankline.nvim'
@@ -77,7 +78,20 @@ packer.startup(function(use)
 		}
 	}
 
+	use({
+		"glepnir/lspsaga.nvim",
+		branch = "main",
+		config = function()
+			local saga = require("lspsaga")
+
+			saga.init_lsp_saga({
+				-- your configuration
+			})
+		end,
+	})
+
 	-- Markdown Preview
+
 	use({
 		"iamcco/markdown-preview.nvim",
 		run = function() vim.fn["mkdp#util#install"]() end,
@@ -105,7 +119,7 @@ configs.setup {
 	sync_install = false,
 	auto_install = true,
 	highlight = { enable = true },
-	indent = { enable = true }
+	indent = { enable = true },
 }
 
 -- LSP and Completion
@@ -138,6 +152,15 @@ lsp.setup_nvim_cmp({
 	mapping = cmp_mappings
 })
 
+vim.diagnostic.config({
+	virtual_text = true,
+	signs = true,
+	update_in_insert = false,
+	underline = true,
+	severity_sort = false,
+	float = true,
+})
+
 lsp.ensure_installed({
 	"sumneko_lua",
 	"html",
@@ -145,7 +168,7 @@ lsp.ensure_installed({
 })
 
 lsp.setup()
-
+--
 -- Rice
 
 -- ColorScheme

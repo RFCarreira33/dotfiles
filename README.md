@@ -13,6 +13,7 @@ I use [Packer](https://github.com/wbthomason/packer.nvim) as my plugin manager
 - [nvim-lualine/lualine.nvim](https://github.com/nvim-lualine/lualine.nvim) - Status Line
 - [romgrk/barbar.nvim](https://github.com/romgrk/barbar.nvim) - Nicer Tabs
 - [nvim-tree/nvim-web-devicons](https://github.com/nvim-tree/nvim-web-devicons) - Icons
+- [glepnir/lspsaga.nvim](https://github.com/glepnir/lspsaga.nvim) - Nicer Lsp UI
 
 #### Utilities
 - [lukas-reineke/indent-blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim) - Indentation

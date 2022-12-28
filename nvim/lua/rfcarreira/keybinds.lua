@@ -10,16 +10,15 @@ keymap("x", "<leader>p", "\"_dP")
 keymap("n", "<leader>sv", "<C-w>v")
 keymap("n", "<leader>sh", "<C-w>s")
 keymap("n", "<leader>sc", ":close<CR>")
+keymap("v", "J", ":m '>+1<CR>gv=gv")
+keymap("v", "K", ":m '<-2<CR>gv=gv")
+
 --format buffer on save
 keymap("i", "<ESC>", "<ESC>:w<CR>:lua vim.lsp.buf.format()<CR>")
 
 -- Navigation
 keymap("n", "<C-u>", "<C-u>zz")
 keymap("n", "<C-d>", "<C-d>zz")
-keymap("n", "H", ":TmuxNavigateLeft<CR>")
-keymap("n", "L", ":TmuxNavigateRight<CR>")
-keymap("n", "J", ":TmuxNavigateDown<CR>")
-keymap("n", "K", ":TmuxNavigateUp<CR>")
 keymap("n", "<S-Tab>", ":bnext<CR>")
 keymap("n", "<leader>q", ":BufferClose<CR>")
 

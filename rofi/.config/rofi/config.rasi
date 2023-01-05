@@ -1,0 +1,14 @@
+configuration {
+	
+	modes: "window,run";
+	font: "UbuntuMono 12";
+ timeout {
+      action: "kb-cancel";
+      delay:  0;
+  }
+  filebrowser {
+      directories-first: true;
+      sorting-method:    "name";
+  }
+}
+@theme "theme"

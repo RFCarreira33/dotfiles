@@ -188,3 +188,4 @@ hide_edge_borders smart_no_gaps
 
 # start background
 exec_always $HOME/.config/polybar/launch.sh
+exec_always picom

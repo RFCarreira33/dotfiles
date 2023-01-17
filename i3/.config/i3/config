@@ -8,7 +8,6 @@
 # i3 config file (v4)
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
-
 set $mod Mod1
 
 # Font for window titles. Will also be used by the bar unless a different font
@@ -48,13 +47,17 @@ floating_modifier $mod
 # or left-clicking anywhere into the window while holding the floating modifier.
 tiling_drag modifier titlebar
 
+# Keybinds and remaps
 bindsym $mod+Return exec alacritty
 
 # start browser
-bindsym $mod+b exec firefox
+bindsym $mod+b exec google-chrome-stable 
 
 # kill focused window
 bindsym $mod+q kill
+
+#bind flameshot
+bindsym Print exec --no-startup-id flameshot gui
 
 # open file explorer
 bindsym $mod+f exec thunar
@@ -62,6 +65,7 @@ bindsym $mod+f exec thunar
 # start rofi 
 bindsym $mod+space exec rofi -show run  
 bindsym $mod+Tab exec rofi -show window  
+
 
 # A more modern dmenu replacement is rofi:
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
@@ -185,6 +189,12 @@ bindsym $mod+r mode "resize"
 smart_borders on 
 gaps inner 10
 hide_edge_borders smart_no_gaps
+
+# Mouse sensivity
+exec_always xset m 1/1 0
+
+# bg image
+exec_always $HOME/.fehbg 
 
 # start background
 exec_always $HOME/.config/polybar/launch.sh

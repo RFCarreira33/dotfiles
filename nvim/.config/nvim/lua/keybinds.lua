@@ -5,7 +5,7 @@ local g = vim.g
 -- Leader Key
 g.mapleader = ' '
 
--- Keymaps
+-- General Keybinds
 keymap("x", "<leader>p", "\"_dP")
 keymap("n", "<leader>sv", "<C-w>v")
 keymap("n", "<leader>sh", "<C-w>s")
@@ -13,22 +13,31 @@ keymap("n", "<leader>sc", ":close<CR>")
 keymap("v", "J", ":m '>+1<CR>gv=gv")
 keymap("v", "K", ":m '<-2<CR>gv=gv")
 
---format buffer on save
-keymap("i", "<ESC>", "<ESC>:w<CR>:lua vim.lsp.buf.format()<CR>")
+-- Resize window using <ctrl> arrow keys
+keymap("n", "<C-Up>", "<cmd>resize +2<cr>")
+keymap("n", "<C-Down>", "<cmd>resize -2<cr>")
+keymap("n", "<C-Left>", "<cmd>vertical resize -2<cr>")
+keymap("n", "<C-Right>", "<cmd>vertical resize +2<cr>")
 
--- Navigation
+--format buffer on save
+keymap("i", "<ESC>", "<ESC><cmd>:lua vim.lsp.buf.formatting_sync()<CR>:w<CR>")
+keymap("n", "<ESC>", "<cmd>:lua vim.lsp.buf.formatting_sync()<CR>:w<CR>")
+
+-- Navigation and buffers
 keymap("n", "<C-u>", "<C-u>zz")
 keymap("n", "<C-d>", "<C-d>zz")
-keymap("n", "<S-Tab>", ":bnext<CR>")
-keymap("n", "<leader>q", ":BufferClose<CR>")
+keymap("n", "<S-h>", "<cmd>BufferPrevious<CR>")
+keymap("n", "<S-l>", "<cmd>BufferNext<CR>")
+keymap("n", "<leader>q", "<cmd>BufferClose<CR>")
+keymap("n", "<leader>bb", "<cmd>BufferPick<CR>")
 
--- Telescope keymaps
-keymap("n", "<leader>f", ':lua require"telescope.builtin".find_files()<CR>')
-keymap("n", "<leader>fs", ':lua require"telescope.builtin".live_grep()<CR>')
-keymap("n", "<leader>b", ':lua require"telescope.builtin".buffers()<CR>')
+-- Telescope
+keymap("n", "<leader>ff", "<cmd>Telescope find_files<CR>")
+keymap("n", "<leader>fs", "<cmd>Telescope live_grep<CR>")
 
--- Tree
-keymap("n", "<leader>e", ":NvimTreeToggle<CR>")
+-- NvimTree
+keymap("n", "<leader>e", "<cmd>NvimTreeToggle<cr>")
+keymap("v", "<leader>e", "<cmd>NvimTreeToggle<cr>")
 
 -- lsp
 keymap("n", "gd", ":lua vim.lsp.buf.definition()<CR>")
@@ -40,6 +49,3 @@ keymap('n', '<C-k>', '<cmd>lua require("cmp").select_prev_item()<CR>')
 keymap('i', '<C-a>', '<cmd>lua require("cmp").complete()<CR>')
 keymap('i', '<CR>', 'v:lua.MUtils.completion_confirm()', { expr = true, noremap = true })
 keymap("n", "<leader>ca", ":lua vim.lsp.buf.code_action()<CR>")
-keymap("n", "<leader>di", ":lua vim.lsp.diagnostic.set_loclist()<CR>")
-keymap('n', '<leader>dn', '<Cmd>Lspsaga diagnostic_jump_next<cr>', { noremap = true, silent = true })
-keymap('n', '<leader>dN', '<Cmd>Lspsaga diagnostic_jump_prev<cr>', { noremap = true, silent = true })

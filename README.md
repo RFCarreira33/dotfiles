@@ -6,14 +6,14 @@
 - Terminal with True Color
 
 ## Plugins
-I use [Packer](https://github.com/wbthomason/packer.nvim) as my plugin manager
+I use [Lazy](https://github.com/folke/lazy.nvim) as my plugin manager
 
 #### Theme and Rice
-- [marko-cerovac/material.nvim](https://github.com/marko-cerovac/material.nvim) - Theme
+- [marko-cerovac/material.nvim](https://github.com/marko-cerovac/material.nvim) - With the darker variant
 - [nvim-lualine/lualine.nvim](https://github.com/nvim-lualine/lualine.nvim) - Status Line
 - [romgrk/barbar.nvim](https://github.com/romgrk/barbar.nvim) - Nicer Tabs
 - [nvim-tree/nvim-web-devicons](https://github.com/nvim-tree/nvim-web-devicons) - Icons
-- [glepnir/lspsaga.nvim](https://github.com/glepnir/lspsaga.nvim) - Nicer Lsp UI
+- [goolord/alpha-nvim](https://github.com/goolord/alpha-nvim) - Cool startup menu
 
 #### Utilities
 - [lukas-reineke/indent-blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim) - Indentation
@@ -23,6 +23,8 @@ I use [Packer](https://github.com/wbthomason/packer.nvim) as my plugin manager
 - [windwp/nvim-autopairs](https://github.com/windwp/nvim-autopairs) - Bracket Pairing
 - [nvim-tree/nvim-tree.lua](https://github.com/nvim-tree/nvim-tree.lua) - File Tree
 - [nvim-treesitter/nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) - Better Syntax Highlight
+- [windwp/nvim-spectre](https://github.com/windwp/nvim-spectre) - Find and Replace VSCode like
+- [andweeb/presence.nvim](https://github.com/andweeb/presence.nvim) - Show discord users that u are superior 
 
 #### LSP & Completion
 - [VonHeikemen/lsp-zero.nvim](https://github.com/VonHeikemen/lsp-zero.nvim) - Amalgamation of LSP and CMP
@@ -33,7 +35,5 @@ I use [Packer](https://github.com/wbthomason/packer.nvim) as my plugin manager
 - [nvim-lua/plenary.nvim](https://github.com/nvim-lua/plenary.nvim)
 - [nvim-lua/popup.nvim](https://github.com/nvim-lua/popup.nvim)
 - [jremmen/vim-ripgrep](https://github.com/jremmen/vim-ripgrep) 
-
-
 
 

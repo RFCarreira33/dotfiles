@@ -35,9 +35,9 @@ keymap("n", "<leader>bb", "<cmd>BufferPick<CR>")
 keymap("n", "<leader>ff", "<cmd>Telescope find_files<CR>")
 keymap("n", "<leader>fs", "<cmd>Telescope live_grep<CR>")
 
--- NvimTree
-keymap("n", "<leader>e", "<cmd>NvimTreeToggle<cr>")
-keymap("v", "<leader>e", "<cmd>NvimTreeToggle<cr>")
+-- NeoTree
+keymap("n", "<leader>e", "<cmd>NeoTreeFocusToggle<cr>")
+keymap("v", "<leader>e", "<cmd>NeoTreeFocusToggle<cr>")
 
 -- lsp
 keymap("n", "gd", ":lua vim.lsp.buf.definition()<CR>")

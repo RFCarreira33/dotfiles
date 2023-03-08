@@ -2,7 +2,8 @@ local lsp = require('lsp-zero')
 lsp.preset("recommended")
 
 lsp.ensure_installed({
-    'lua_ls'
+  'lua_ls',
+  'rust_analyzer'
 })
 
 -- require cmp to remap
@@ -31,7 +32,16 @@ lsp.setup_nvim_cmp({
     mapping = cmp_mappings
 })
 
+
+lsp.configure('rust_analyzer', {
+  on_attach = function(client, bufnr)
+    print('Rust 🦀🦀🦀');
+  end,
+  cmd = { 'rustup', 'run' ,'stable', 'rust-analyzer' },
+})
+
 lsp.setup()
+
 
 -- inline diagnostics
 vim.diagnostic.config({

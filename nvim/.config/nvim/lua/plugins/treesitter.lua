@@ -16,6 +16,8 @@ return {
                     "javascript",
                     "json",
                     "lua",
+                    "rust",
+                    "toml",
                     "php",
                     "cpp",
                     "c",

@@ -40,6 +40,7 @@ keymap("n", "<leader>e", "<cmd>NeoTreeFocusToggle<cr>")
 keymap("v", "<leader>e", "<cmd>NeoTreeFocusToggle<cr>")
 
 -- lsp
+keymap("n", "<leader>sd", ":lua vim.diagnostic.open_float(0, {scope='line'})<CR>")
 keymap("n", "gd", ":lua vim.lsp.buf.definition()<CR>")
 keymap("n", "gr", ":lua vim.lsp.buf.references()<CR>")
 keymap("n", "K", ":lua vim.lsp.buf.hover()<CR>")

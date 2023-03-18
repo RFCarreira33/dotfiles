@@ -2,8 +2,9 @@ local lsp = require('lsp-zero')
 lsp.preset("recommended")
 
 lsp.ensure_installed({
-  'lua_ls',
-  'rust_analyzer'
+    'lua_ls',
+    'rust_analyzer',
+    'tsserver'
 })
 
 -- require cmp to remap
@@ -32,12 +33,24 @@ lsp.setup_nvim_cmp({
     mapping = cmp_mappings
 })
 
+lsp.configure('tsserver', {
+    on_attach = function(client, bufnr)
+        print('Typescript 🦕🦕🦕');
+    end,
+    cmd = { 'typescript-language-server', '--stdio' },
+    init_options = {
+        preferences = {
+            importModuleSpecifierPreference = 'project=relative',
+            jsxAttributeCompletionStyle = 'none'
+        }
+    }
+})
 
 lsp.configure('rust_analyzer', {
-  on_attach = function(client, bufnr)
-    print('Rust 🦀🦀🦀');
-  end,
-  cmd = { 'rustup', 'run' ,'stable', 'rust-analyzer' },
+    on_attach = function(client, bufnr)
+        print('Rust 🦀🦀🦀');
+    end,
+    cmd = { 'rustup', 'run', 'stable', 'rust-analyzer' },
 })
 
 lsp.setup()

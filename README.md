@@ -54,7 +54,7 @@ I use [Lazy](https://github.com/folke/lazy.nvim) as my plugin manager
 
 #### Theme and Rice
 
-- [marko-cerovac/material.nvim](https://github.com/marko-cerovac/material.nvim) - With the darker variant
+- [navarasu/onedark.nvim](https://github.com/navarasu/onedark.nvim) - Recently became an Atom fanboy
 - [nvim-lualine/lualine.nvim](https://github.com/nvim-lualine/lualine.nvim) - Status Line
 - [romgrk/barbar.nvim](https://github.com/romgrk/barbar.nvim) - Nicer Tabs
 - [nvim-tree/nvim-web-devicons](https://github.com/nvim-tree/nvim-web-devicons) - Icons
@@ -67,7 +67,7 @@ I use [Lazy](https://github.com/folke/lazy.nvim) as my plugin manager
 - [tpope/vim-surround](https://github.com/tpope/surround) - Fast surround changer
 - [iamcco/markdown-preview.nvim](https://github.com/iamcco/markdown-preview.nvim) - Markdown Previewer
 - [windwp/nvim-autopairs](https://github.com/windwp/nvim-autopairs) - Bracket Pairing
-- [nvim-tree/nvim-tree.lua](https://github.com/nvim-tree/nvim-tree.lua) - File Tree
+- [nvim-neo-tree/neo-tree.nvim](https://github.com/nvim-neo-tree/neo-tree.nvim) - File Tree
 - [nvim-treesitter/nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) - Better Syntax Highlight
 - [windwp/nvim-spectre](https://github.com/windwp/nvim-spectre) - Find and Replace VSCode like
 - [andweeb/presence.nvim](https://github.com/andweeb/presence.nvim) - Show discord users that u are superior

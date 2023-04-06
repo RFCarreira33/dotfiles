@@ -1,3 +1,3 @@
 return {
-    -- Will call all the plugins in this directory
+  -- Will call all the plugins in this directory
 }

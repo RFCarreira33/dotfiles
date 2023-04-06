@@ -29,7 +29,6 @@ keymap("n", "<C-d>", "<C-d>zz")
 keymap("n", "<S-h>", "<cmd>BufferPrevious<CR>")
 keymap("n", "<S-l>", "<cmd>BufferNext<CR>")
 keymap("n", "<leader>q", "<cmd>BufferClose<CR>")
-keymap("n", "<leader>bb", "<cmd>BufferPick<CR>")
 
 -- Telescope
 keymap("n", "<leader>ff", "<cmd>Telescope find_files<CR>")
@@ -45,8 +44,10 @@ keymap("n", "gd", ":lua vim.lsp.buf.definition()<CR>")
 keymap("n", "gr", ":lua vim.lsp.buf.references()<CR>")
 keymap("n", "K", ":lua vim.lsp.buf.hover()<CR>")
 keymap("n", "<leader>rn", ":lua vim.lsp.buf.rename()<CR>")
+keymap("n", "<leader>ca", ":lua vim.lsp.buf.code_action()<CR>")
+
+-- Dont rly use this I prefer arrow keys but its here anyway
 keymap('n', '<C-j>', '<cmd>lua require("cmp").select_next_item()<CR>')
 keymap('n', '<C-k>', '<cmd>lua require("cmp").select_prev_item()<CR>')
 keymap('i', '<C-a>', '<cmd>lua require("cmp").complete()<CR>')
 keymap('i', '<CR>', 'v:lua.MUtils.completion_confirm()', { expr = true, noremap = true })
-keymap("n", "<leader>ca", ":lua vim.lsp.buf.code_action()<CR>")

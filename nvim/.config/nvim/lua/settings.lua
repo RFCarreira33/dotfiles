@@ -1,5 +1,4 @@
 -- This files set all the common settings for the editor
-
 local opt = vim.opt
 
 -- Basic --
@@ -20,8 +19,8 @@ opt.errorbells = false
 opt.autoindent = true
 
 -- Tabs
-opt.shiftwidth = 4
-opt.tabstop = 4
+opt.shiftwidth = 2
+opt.tabstop = 2
 opt.smartindent = true
 
 -- Search

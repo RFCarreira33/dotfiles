@@ -1,6 +1,6 @@
 # Installation
 
-Clone the repo and use stow to create the symlinks and you should get something like this.
+Clone the repo and use stow to create the symlinks and you should get something like this (or maybe not if I forget to update the picture).
 
 ![Arch](/resources/main.png)
 
@@ -71,6 +71,7 @@ I use [Lazy](https://github.com/folke/lazy.nvim) as my plugin manager
 - [nvim-treesitter/nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) - Better Syntax Highlight
 - [windwp/nvim-spectre](https://github.com/windwp/nvim-spectre) - Find and Replace VSCode like
 - [andweeb/presence.nvim](https://github.com/andweeb/presence.nvim) - Show discord users that u are superior
+- [akinsho/git-conflict.nvim](https://github.com/akinsho/git-conflict.nvim) - Conflict Resolving tool
 
 #### LSP & Completion
 

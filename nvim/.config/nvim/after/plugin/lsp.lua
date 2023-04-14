@@ -19,7 +19,7 @@ local cmp_mappings = lsp.defaults.cmp_mappings({
   -- map <C-f> to scroll down
   ['<C-f>'] = cmp.mapping.scroll_docs(4),
   -- map <C-d> to scroll up
-  ['<C-d>'] = cmp.mapping.scroll_docs( -4),
+  ['<C-d>'] = cmp.mapping.scroll_docs(-4),
   -- map <C-j> to select next item
   ['<C-j>'] = cmp.mapping.select_next_item(),
   -- map <C-k> to select previous item
@@ -45,6 +45,30 @@ lsp.configure('tsserver', {
       jsxAttributeCompletionStyle = 'none'
     }
   }
+})
+
+lsp.configure('lua_ls', {
+  on_attach = function(client, bufnr)
+    print('Lua 🌙🌙🌙');
+  end,
+  cmd = { 'lua-language-server' },
+  settings = {
+    Lua = {
+      runtime = {
+        version = 'LuaJIT',
+        path = vim.split(package.path, ';'),
+      },
+      diagnostics = {
+        globals = { 'vim' },
+      },
+      workspace = {
+        library = {
+          [vim.fn.expand('$VIMRUNTIME/lua')] = true,
+          [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
+        },
+      },
+    },
+  },
 })
 
 lsp.configure('pyright', {

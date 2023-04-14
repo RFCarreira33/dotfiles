@@ -20,8 +20,8 @@ keymap("n", "<C-Left>", "<cmd>vertical resize -2<cr>")
 keymap("n", "<C-Right>", "<cmd>vertical resize +2<cr>")
 
 --format buffer on save
-keymap("i", "<ESC>", "<ESC><cmd>:lua vim.lsp.buf.formatting_sync()<CR>:w<CR>")
-keymap("n", "<ESC>", "<cmd>:lua vim.lsp.buf.formatting_sync()<CR>:w<CR>")
+keymap("i", "<ESC>", "<ESC><cmd>:lua vim.lsp.buf.format()<CR>:w<CR>")
+keymap("n", "<ESC>", "<cmd>:lua vim.lsp.buf.format()<CR>:w<CR>")
 
 -- Navigation and buffers
 keymap("n", "<C-u>", "<C-u>zz")

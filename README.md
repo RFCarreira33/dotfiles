@@ -4,6 +4,8 @@ Clone the repo and use stow to create the symlinks and you should get something 
 
 ![Arch](/resources/main.png)
 
+Recently moved from i3 to Gnome because I wanted a more polished desktop experience. i3 is really good for productivity but feels too tryhardy for general desktop use, would probably go back to it if I get a dedicated work/productivity machine.
+
 ## Details
 
 This information would take up a lot a of space so expand what you are insterested in.
@@ -31,7 +33,6 @@ Probably missed some but the most important ones are here I guess.
 | fzf                      | APKG   | Fuzzy search              |
 | zsh, oh-my-zsh           | APKG   | Shell with framework      |
 | pipewire                 | APKG   | Audio                     |
-| picom                    | APKG   | Blur                      |
 | rofi                     | APKG   | Quick Laucher             |
 | polybar                  | APKG   | Nicer status bar          |
 | alacritty                | APKG   | Terminal                  |

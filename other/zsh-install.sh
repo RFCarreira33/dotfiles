@@ -26,4 +26,8 @@ if [ ! -d "$HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting" ]; then
     git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "$HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"
 fi
 
+# cp .zshrc and .p10k.zsh to home
+rm -rf ~/.zshrc ~/.p10k.zsh ~/.tmux.conf
+cp ../home/.zshrc ../home/.p10k.zsh ../home/.tmux.conf ~
+
 echo "Installation complete! Please restart your terminal."

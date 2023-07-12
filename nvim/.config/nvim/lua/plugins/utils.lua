@@ -4,22 +4,6 @@ return {
   'github/copilot.vim',
   'lewis6991/gitsigns.nvim',
 
-  {
-    'akinsho/git-conflict.nvim',
-    config = function()
-      require('git-conflict').setup({
-        default_mappings = {
-          ours = 'c',
-          theirs = 'i',
-          none = '0',
-          both = 'b',
-          next = 'n',
-          prev = 'N',
-        },
-      })
-    end
-  },
-
   -- Navigation
   'christoomey/vim-tmux-navigator',
 
@@ -38,7 +22,8 @@ return {
   },
 
   -- Show discord users that u are superior
-  { "andweeb/presence.nvim",
+  {
+    "andweeb/presence.nvim",
     config = function()
       require("presence").setup({
         auto_update       = true,

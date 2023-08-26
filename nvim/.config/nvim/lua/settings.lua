@@ -9,7 +9,7 @@ opt.wrap = false
 opt.splitright = true
 opt.autowrite = true
 opt.expandtab = true
-opt.spelllang = { "en" }
+opt.spelllang = { 'en' }
 opt.undofile = true
 opt.scrolloff = 8
 opt.sidescrolloff = 12
@@ -31,3 +31,13 @@ opt.smartindent = true
 
 -- Markdown identation
 vim.g.markdown_recommended_style = 0
+
+-- Inline diagnostic
+vim.diagnostic.config({
+  virtual_text = true,
+  signs = true,
+  update_in_insert = false,
+  underline = true,
+  severity_sort = false,
+  float = true,
+})

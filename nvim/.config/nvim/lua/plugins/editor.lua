@@ -7,17 +7,6 @@ return {
   'nvim-lua/telescope.nvim',
   'jremmen/vim-ripgrep',
 
-  -- Markdown previewer
-  {
-    "iamcco/markdown-preview.nvim",
-    lazy = true,
-    ft = "markdown",
-    cmd = { "MarkdownPreview", "MarkdownPreviewStop" },
-    build = function()
-      vim.fn["mkdp#util#install"]()
-    end,
-  },
-
   -- Inline Colors
   {
     'NvChad/nvim-colorizer.lua',
@@ -45,13 +34,14 @@ return {
   -- blankline indent
   {
     'lukas-reineke/indent-blankline.nvim',
-    event = { 'BufReadPost', 'BufNewFile' },
-    opts = {
-      char = '│',
-      filetype_exclude = { 'help', 'alpha', 'dashboard', 'NeoTree', 'lazy' },
-      show_trailing_blankline_indent = false,
-      show_current_context = false,
-    },
+    main = "ibl",
+    config = function()
+      require("ibl").setup {
+        indent = { char = '│' },
+        whitespace = { remove_blankline_trail = false },
+        scope = { enabled = false },
+      }
+    end
   },
   -- fast commenting
   'tpope/vim-commentary',

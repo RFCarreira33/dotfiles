@@ -2,13 +2,14 @@ return {
   --Colorscheme
   {
     'navarasu/onedark.nvim',
+    lazy = false,
     priority = 1000,
     config = function()
       require('onedark').setup {
-        style = 'darker'
+        style = 'darker',
       }
       require('onedark').load()
-    end,
+    end
   },
 
   -- Diferent UI
@@ -42,7 +43,6 @@ return {
   {
     'nvim-lualine/lualine.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons', opt = true },
-
     config = function()
       require('lualine').setup {
         options = {
@@ -57,12 +57,8 @@ return {
           lualine_b = { 'branch', 'diff', 'diagnostics' },
           lualine_c = { 'filename' },
           lualine_x = { 'fileformat', 'filetype' },
-          lualine_y = { 'progress', 'location' },
-          lualine_z = {
-            function()
-              return " " .. os.date("%R")
-            end
-          },
+          lualine_y = { 'progress' },
+          lualine_z = { 'location' },
         },
       }
     end,
@@ -115,7 +111,6 @@ return {
         return dashboard
       end,
       config = function(_, dashboard)
-        -- close Lazy and re-open when the dashboard is ready
         if vim.o.filetype == 'lazy' then
           vim.cmd.close()
           vim.api.nvim_create_autocmd('User', {
@@ -133,7 +128,7 @@ return {
             local stats = require('lazy').stats()
             local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
             dashboard.section.footer.val = '⚡ Neovim loaded ' ..
-                stats.count .. ' plugins in ' .. ms .. 'ms'
+            stats.count .. ' plugins in ' .. ms .. 'ms'
             pcall(vim.cmd.AlphaRedraw)
           end,
         })

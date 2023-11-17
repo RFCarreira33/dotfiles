@@ -6,26 +6,30 @@ local g = vim.g
 g.mapleader = ' '
 
 -- General Keybinds
-keymap('x', '<leader>p', '\'_dP')
 keymap('n', '<leader>sv', '<C-w>v')
 keymap('n', '<leader>sh', '<C-w>s')
 keymap('n', '<leader>sc', '<cmd>close<CR>')
-keymap('v', 'J', '<cmd>m ">+1<CR>gv=gv')
-keymap('v', 'K', '<cmd>m "<-2<CR>gv=gv')
+keymap('v', 'J', ":m '>+1<CR>gv=gv", { silent = true })
+keymap('v', 'K', ":m '<-2<CR>gv=gv", { silent = true })
+keymap('v', '>', '>gv', { silent = true })
+keymap('v', '<', '<gv', { silent = true })
+keymap('v', '<leader>y', '"+y')
+keymap('n', '<leader>y', '"+Y')
+keymap('v', '<leader>p', '"_dP')
 
 -- Resize window using <ctrl> arrow keys
 keymap('n', '<C-Up>', '<cmd>resize +2<cr>')
 keymap('n', '<C-Down>', '<cmd>resize -2<cr>')
 keymap('n', '<C-Left>', '<cmd>vertical resize -2<cr>')
 keymap('n', '<C-Right>', '<cmd>vertical resize +2<cr>')
-
---format buffer on save
 keymap('i', '<ESC>', '<ESC><cmd>:lua vim.lsp.buf.format()<CR><cmd>w<CR>')
 keymap('n', '<ESC>', '<cmd>:lua vim.lsp.buf.format()<CR><cmd>w<CR>')
 
 -- Navigation and buffers
 keymap('n', '<C-u>', '<C-u>zz')
 keymap('n', '<C-d>', '<C-d>zz')
+
+--format buffer on save
 keymap('n', '<S-h>', '<cmd>BufferPrevious<CR>')
 keymap('n', '<S-l>', '<cmd>BufferNext<CR>')
 keymap('n', '<leader>q', '<cmd>BufferClose<CR>')

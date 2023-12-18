@@ -1,5 +1,4 @@
 return {
-  -- File Explorer
   {
     'nvim-neo-tree/neo-tree.nvim',
     branch = 'v3.x',
@@ -21,7 +20,6 @@ return {
       'nvim-tree/nvim-web-devicons',
       'MunifTanjim/nui.nvim',
     },
-    -- Config for the plugin Setup
     opts = {
       sources = { 'filesystem', 'buffers', 'git_status', 'document_symbols' },
       open_files_do_not_replace_types = { 'terminal', 'Trouble', 'qf', 'Outline' },
@@ -57,7 +55,7 @@ return {
       },
       default_component_configs = {
         indent = {
-          with_expanders = true, -- if nil and file nesting is enabled, will enable expanders
+          with_expanders = true,
           expander_collapsed = '',
           expander_expanded = '',
           expander_highlight = 'NeoTreeExpander',
@@ -66,8 +64,6 @@ return {
           folder_closed = '',
           folder_open = '',
           folder_empty = '󰜌',
-          -- The next two settings are only a fallback, if you use nvim-web-devicons and configure default icons there
-          -- then these will never be used.
           default = '*',
           highlight = 'NeoTreeFileIcon'
         },
@@ -75,34 +71,10 @@ return {
           symbol = '[+]',
           highlight = 'NeoTreeModified',
         },
-        git_status = {
-          symbols = {
-            -- Change type
-            added     = '', -- or '✚', but this is redundant info if you use git_status_colors on the name
-            modified  = '', -- or '', but this is redundant info if you use git_status_colors on the name
-            deleted   = '✖', -- this can only be used in the git_status source
-            renamed   = '󰁕', -- this can only be used in the git_status source
-            -- Status type
-            untracked = '',
-            ignored   = '',
-            unstaged  = 'u',
-            staged    = '',
-            conflict  = '',
-          }
-        },
+        name = {
+          git_status_colors = true,
+        }
       },
     },
-    -- End Config
-    config = function(_, opts)
-      require('neo-tree').setup(opts)
-      vim.api.nvim_create_autocmd('TermClose', {
-        pattern = '*lazygit',
-        callback = function()
-          if package.loaded['neo-tree.sources.git_status'] then
-            require('neo-tree.sources.git_status').refresh()
-          end
-        end,
-      })
-    end,
   },
 }

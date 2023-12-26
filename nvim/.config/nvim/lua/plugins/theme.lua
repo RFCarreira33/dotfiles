@@ -1,17 +1,11 @@
 return {
   {
-    'navarasu/onedark.nvim',
+    'ellisonleao/gruvbox.nvim',
     lazy = false,
     priority = 1000,
     config = function ()
-      local theme = require('onedark')
-      theme.setup {
-        style = 'darker',
-        code_style = {
-          keywords = 'bold',
-        }
-      }
-      theme.load()
+	vim.o.background = "dark" 
+	vim.cmd([[colorscheme gruvbox]])
     end
   },
 

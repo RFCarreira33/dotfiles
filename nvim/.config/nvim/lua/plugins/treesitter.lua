@@ -6,6 +6,7 @@ return {
     "windwp/nvim-ts-autotag",
   },
   opts = {
+    auto_install = true,
     highlight = { enable = true, },
     indent = { enable = true },
     autotag = { enable = true },
@@ -23,6 +24,5 @@ return {
       "markdown",
       "markdown_inline",
     },
-    auto_install = true,
   }
 }

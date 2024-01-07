@@ -11,6 +11,7 @@ PACKAGES=(
   "lazygit"
   "neofetch"
   "tmux"
+  "alacritty"
   # shell
   "stow"
   "eza"
@@ -41,12 +42,12 @@ if [ "$OS" == "Darwin" ]; then
   echo "Checking Homebrew...";
   check_command "brew" || echo "Installing Homebrew..." && /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   PACKAGE_MANAGER="brew install";
-  PACKAGES+=("iterm2", "gnu-sed", "node");
+  PACKAGES+=("gnu-sed", "node");
 
 elif [ "$OS" == "Linux" ]; then
   echo "Checking package manager...";
   PACKAGE_MANAGER=$(define_linux_package_manager);
-  PACKAGES+=("alacritty", "nodejs", "ttf-hack-nerd");
+  PACKAGES+=("nodejs", "ttf-hack-nerd");
 
 else
   echo "Unsupported operating system.";
@@ -63,10 +64,11 @@ source ./zsh.sh && source ./zsh.sh
 
 # Specific OS commands
 if [ "$OS" == "Darwin" ]; then
+  sudo spctl --master-disable
   check_command "cargo" || rustup-init -y
 else
   check_command "cargo" || rustup default stable
 fi
 
-rm -f ~/.zshrc
+rm -rf ~/.zshrc ~/.p10k.zsh ~/.tmux.conf ~/.config/nvim ~/.config/alacritty
 cd .. && stow nvim alacritty home

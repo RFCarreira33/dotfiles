@@ -50,6 +50,8 @@ return {
     },
   },
 
+  {'akinsho/git-conflict.nvim', version = "*", config = true},
+
   {
     'andweeb/presence.nvim',
     opts = {

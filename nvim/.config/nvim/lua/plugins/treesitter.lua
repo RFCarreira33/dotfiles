@@ -11,6 +11,7 @@ return {
     indent = { enable = true },
     autotag = { enable = true },
     ensure_installed = {
+      "python",
       "json",
       "typescript",
       "tsx",

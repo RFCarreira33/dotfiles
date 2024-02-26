@@ -66,7 +66,7 @@ return {
       single_file_support = false,
       on_init = function(client)
         client.server_capabilities.documentFormattingProvider = false
-        client.server_capabilities.documentFormattingRangeProvider = false
+        client.server_capabilities.documentFormattingRangeProvider = true
       end,
     })
 

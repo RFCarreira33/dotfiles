@@ -21,7 +21,6 @@ return {
     },
     config = function()
       require("java").setup()
-      require('lspconfig').jdtls.setup({})
     end
   },
   {
@@ -87,6 +86,9 @@ return {
         }),
       })
 
+      local lspconfig = require('lspconfig')
+
+      lspconfig.jdtls.setup({})
       lspconfig.tsserver.setup({
         single_file_support = false,
         on_init = function(client)

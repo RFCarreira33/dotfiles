@@ -51,13 +51,4 @@ return {
   },
 
   {'akinsho/git-conflict.nvim', version = "*", config = true},
-
-  {
-    'andweeb/presence.nvim',
-    opts = {
-      auto_update       = true,
-      neovim_image_text = 'Help, How do I quit this thing?',
-      main_image        = 'neovim',
-    }
-  },
 }

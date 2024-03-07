@@ -1,31 +1,16 @@
-" .ideavimrc is a configuration file for IdeaVim plugin. It uses
-"   the same commands as the original .vimrc configuration.
-" You can find a list of commands here: https://jb.gg/h38q75
-" Find more examples here: https://jb.gg/share-ideavimrc
-
-
-"" -- Suggested options --
-" Show a few lines of context around the cursor. Note that this makes the
-" text scroll if you mouse-click near the start or end of the window.
 set scrolloff=8
 set visualbell
 set linenumber
 set showmode
 set clipboard+=unnamed
-
 set ignorecase
 set smartcase
 set incsearch
 set hlsearch
 set nerdtree
 
-" Don't use Ex mode, use Q for formatting.
-map Q gq
 let mapleader = " "
 
-" --- Enable IdeaVim plugins https://jb.gg/ideavim-plugins
-
-" Commentary plugin
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 
@@ -33,10 +18,16 @@ nnoremap <A-h> <C-w>h
 nnoremap <A-l> <C-w>l
 nnoremap <A-k> <C-w>k
 nnoremap <A-j> <C-w>j
+nnoremap <Esc> :w<CR>
+nnoremap L :tabnext<CR>
+nnoremap H :tabprev<CR>\
 
-map <leader>ca <Action>(ShowIntentionActions)
+inoremap <Esc> <C-o>:w<CR>
+
 vnoremap < <gv
 vnoremap > >gv
+
+map <leader>ca <Action>(ShowIntentionActions)
 map <leader>e :NERDTreeToggle<CR>
 map <leader>sv <Action>(SplitVertically)
 map <leader>sh <Action>(SplitHorizontally)
@@ -46,7 +37,3 @@ map <leader>fs <action>(RecentFiles)
 map <leader>q <action>(CloseContent)
 map <leader>rn <Action>(RenameElement)
 
-nnoremap <Esc> :w<CR>
-inoremap <Esc> <C-o>:w<CR>
-nnoremap L :tabnext<CR>
-nnoremap H :tabprev<CR>\

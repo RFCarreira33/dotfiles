@@ -18,6 +18,7 @@ alias nvimf='nvim $(fzf)'
 alias cdf='cd $(fzf | xargs -I{} dirname {} | head -n 1)'
 alias ls='eza -l --git --icons=always --group-directories-first'
 alias c='clear'
+alias cat='bat'
 
 jcar() {
   trap "rm $1.class" SIGINT SIGTERM

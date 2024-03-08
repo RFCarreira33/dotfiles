@@ -9,6 +9,7 @@ return {
       sources = {
         formatting.stylua,
         formatting.prettierd,
+        formatting.black,
         diagnostics.write_good,
         diagnostics.djlint,
         diagnostics.golangci_lint,

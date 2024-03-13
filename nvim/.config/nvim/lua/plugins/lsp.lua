@@ -69,5 +69,8 @@ return {
         client.server_capabilities.documentFormattingRangeProvider = true
       end,
     })
+
+    lspconfig.pyright.setup{}
+
   end
 }

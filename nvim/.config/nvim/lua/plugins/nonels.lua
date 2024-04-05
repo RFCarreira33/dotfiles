@@ -10,6 +10,7 @@ return {
         formatting.stylua,
         formatting.prettierd,
         formatting.black,
+        formatting.clang_format,
         diagnostics.write_good,
         diagnostics.djlint,
         diagnostics.golangci_lint,

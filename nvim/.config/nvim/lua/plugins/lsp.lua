@@ -72,5 +72,13 @@ return {
 
     lspconfig.pyright.setup{}
 
+    lspconfig.clangd.setup({
+      cmd = { 'clangd', '--background-index' },
+      on_init = function(client)
+        client.server_capabilities.documentFormattingProvider = false
+        client.server_capabilities.documentRangeFormattingProvider = false
+      end,
+    })
+
   end
 }

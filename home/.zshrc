@@ -15,7 +15,7 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 crun() {
-  gcc -std=c11 "$1" -lm && ./a.out
+  gcc -std=c11 -W -Wall "$1" -lm && ./a.out ${@:2}
 }
 
 alias ls='eza -l --git --icons=always --group-directories-first'

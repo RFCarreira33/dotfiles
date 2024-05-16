@@ -5,9 +5,6 @@ theme = "gruvbox-dark"
 
 [icons]
 icons = "awesome4"
-[icons.overrides]
-bat = ["|E|", "|_|", "|=|", "|F|"]
-bat_charging = "|^| "
 
 [[block]]
 block = "cpu"
@@ -17,7 +14,17 @@ critical_cpu = 90
 
 [[block]]
 block = "memory"
-format = " $icon $mem_used.eng(prefix:Mi) "
+format = " $icon $mem_used.eng(prefix:M, w:2) "
+
+[[block]]
+block = "temperature"
+format = " $icon $max "
+interval = 10
+chip = "*-isa-*"
+
+[[block]]
+block = "battery"
+format = " $icon  {$percentage $power.eng(w:2)} "
 
 [[block]]
 block = "sound"
@@ -26,16 +33,6 @@ button = "left"
 cmd = "pavucontrol"
 
 [[block]]
-block = "battery"
-
-[[block]]
-block = "net"
-format = " $icon { $ssid}"
-[[block.click]]
-button = "left"
-cmd = "pavucontrol"
-
-[[block]]
 block = "time"
 interval = 5
-format = "$timestamp.datetime(f:'%d/%m/%y %R') "
+format = " $timestamp.datetime(f:'%d/%m/%y %R') "

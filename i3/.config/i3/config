@@ -165,10 +165,9 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-
-exec_always setxkbmap pt
-exec_always setxkbmap -option "control:nocaps"
 exec_always feh --bg-scale $HOME/dotfiles/resources/wall.jpg
+for_window [class="^.*"] border pixel 1
+gaps inner 10
 
 # Theme
 set $bg #282828
@@ -182,12 +181,11 @@ set $gray #a89984
 set $darkgray #1d2021
 set $lightgray #bdae93
 
-client.focused          $lightgray $lightgray $bg $purple $darkgray
+client.focused          $yellow $yellow $yellow $yellow $yellow 
 client.focused_inactive $darkgray $darkgray $lightgray $purple $darkgray
 client.unfocused        $darkgray $darkgray $lightgray $purple $darkgray
 client.urgent           $red $red $white $red $red
 
-gaps inner 10
 bar {
         status_command i3status-rs
         position top

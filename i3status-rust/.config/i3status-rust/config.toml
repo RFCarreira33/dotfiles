@@ -14,7 +14,7 @@ critical_cpu = 90
 
 [[block]]
 block = "memory"
-format = " $icon $mem_used.eng(prefix:M, w:2) "
+format = " $icon $mem_used.eng(prefix:M, w:4) "
 
 [[block]]
 block = "temperature"
@@ -24,7 +24,8 @@ chip = "*-isa-*"
 
 [[block]]
 block = "battery"
-format = " $icon  {$percentage $power.eng(w:2)} "
+format = " $icon  {$percentage $power.eng(w:4)} "
+full_format = " $icon  Full "
 
 [[block]]
 block = "sound"

@@ -10,9 +10,11 @@ plugins=(
 	git
 	zsh-autosuggestions
 	zsh-syntax-highlighting
+    zsh-vi-mode
 )
 
 source $ZSH/oh-my-zsh.sh
+bindkey -v
 
 crun() {
   gcc -std=c11 -W -Wall "$1" -lm && ./a.out ${@:2}
@@ -24,7 +26,7 @@ alias cat='bat'
 alias grep='rg'
 alias vim="nvim"
 alias vi="nvim"
-alias dots="cd ~/dotfiles"
+alias dots="cd ~/dotfiles && nvim"
 alias vimrc="nvim ~/dotfiles/nvim/.config/nvim"
 
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

@@ -47,7 +47,7 @@ bindsym $mod+q kill
 bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
-  bindsym $mod+l focus right
+bindsym $mod+l focus right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -154,7 +154,7 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-exec_always feh --bg-scale /usr/share/backgrounds/wall.jpg
+# exec_always feh --bg-scale /usr/share/backgrounds/wall.jpg
 gaps inner 10
 gaps outer -10
 for_window [class="^.*"] border pixel 1

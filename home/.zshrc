@@ -14,7 +14,6 @@ plugins=(
 )
 
 source $ZSH/oh-my-zsh.sh
-bindkey -v
 
 crun() {
   gcc -std=c11 -W -Wall "$1" -lm && ./a.out ${@:2}

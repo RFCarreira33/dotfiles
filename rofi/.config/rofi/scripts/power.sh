@@ -6,11 +6,11 @@ choices=$(echo "$choices" | sed 's/[^ ]* //g' | xargs)
 
 case "$choices" in
   "Turbo") 
-    sudo -A tlp ac
+    sudo tlp ac
     notify-send "*Eurobit kicks in*"
     ;;
   "Save") 
-    sudo -A tlp bat
+    sudo tlp bat
     notify-send "Running on low power mode"
     ;;
   "Shutdown") 

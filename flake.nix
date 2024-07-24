@@ -10,11 +10,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    #spicetify-nix = {
-    #  url = "github:the-argus/spicetify-nix";
-    #  inputs.nixpkgs.follows = "nixpkgs";
-    #};
-
+    spicetify-nix = {
+      url = "github:Gerg-L/spicetify-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
   };
 
@@ -22,6 +21,7 @@
     { self
     , nixpkgs
     , home-manager
+    , spicetify-nix
     , ...
     } @ inputs:
     let
@@ -36,9 +36,17 @@
             inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t480s
           ];
         };
+
+        torkoal = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit system inputs; };
+          modules = [
+            ./hosts/torkoal/configuration.nix
+          ];
+        };
       };
+
       homeConfigurations.rofis = home-manager.lib.homeManagerConfiguration {
-        specialArgs = { inherit inputs; };
+        extraSpecialArgs = { inherit inputs; };
         modules = [ ./modules/home.nix ];
       };
     };

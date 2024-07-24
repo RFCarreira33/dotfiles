@@ -1,14 +1,9 @@
-{ inputs
-, lib
-, config
-, pkgs
-, ...
-}: {
+{ inputs, lib, config, pkgs, ... }:
+{
   imports = [
-    # If you want to use home-manager modules from other flakes (such as nix-colors):
-    # inputs.nix-colors.homeManagerModule
     ./neovim.nix
     ./alacritty.nix
+    ./spotify.nix
   ];
 
   nixpkgs = {
@@ -34,5 +29,5 @@
 
   systemd.user.startServices = "sd-switch";
 
-  home.stateVersion = "23.11";
+  home.stateVersion = "24.05";
 }

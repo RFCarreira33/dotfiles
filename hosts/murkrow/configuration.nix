@@ -1,9 +1,5 @@
-{ inputs
-, lib
-, config
-, pkgs
-, ...
-}: {
+{ inputs, lib, config, pkgs, ... }:
+{
   imports = [
     inputs.home-manager.nixosModules.home-manager
     ./hardware-configuration.nix
@@ -14,14 +10,15 @@
 
   networking.hostName = "murkrow"; # Define your hostname.
 
-  services.libinput = {
-    enable = true;
-    touchpad.naturalScrolling = true;
+  services.passSecretService.enable = true;
+  services.resolved.enable = true;
+  nix.gc = {
+    automatic = true;
+    dates = "daily";
+    options = "--delete-older-than 2d";
   };
-   services.passSecretService.enable = true;
 
   networking.networkmanager.enable = true;
-  services.resolved.enable = true;
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   time.timeZone = "Europe/Lisbon";
@@ -38,20 +35,23 @@
     LC_TELEPHONE = "pt_PT.UTF-8";
     LC_TIME = "pt_PT.UTF-8";
   };
+  console.keyMap = "pt-latin1";
+  users.defaultUserShell = pkgs.zsh;
 
-  nix.gc = {
-    automatic = true;
-    dates = "daily";
-    options = "--delete-older-than 2d";
+  nixpkgs.config.allowUnfree = true;
+
+  services.libinput = {
+    enable = true;
+    touchpad.naturalScrolling = true;
   };
 
   # Configure keymap in X11
   services.xserver = {
     enable = true;
     xkb = {
-    	variant = "";
-        layout = "pt";
-        options = "ctrl:nocaps";
+      variant = "";
+      layout = "pt";
+      options = "ctrl:nocaps";
     };
 
     desktopManager = {
@@ -68,7 +68,6 @@
 
   services.openssh.enable = true;
 
-  console.keyMap = "pt-latin1";
 
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
@@ -85,7 +84,6 @@
     gpuOffset = -60;
   };
 
-  users.defaultUserShell = pkgs.zsh;
   users.users.rofis = {
     isNormalUser = true;
     description = "Rodrigo Carreira";
@@ -133,8 +131,6 @@
     };
   };
 
-  nixpkgs.config.allowUnfree = true;
-
   environment.systemPackages = with pkgs; [
     neovim
     git
@@ -154,6 +150,8 @@
     yarn
     xclip
     bat
+    rustup
+    gcc
   ];
 
   system.stateVersion = "24.05";

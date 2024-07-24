@@ -1,9 +1,5 @@
-{ inputs
-, lib
-, config
-, pkgs
-, ...
-}: {
+{ inputs, lib, config, pkgs, ... }:
+{
   xdg = {
     enable = true;
     configFile."nvim" = {
@@ -19,4 +15,3 @@
     ];
   };
 }
-

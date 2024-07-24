@@ -1,5 +1,3 @@
-# This is your system's configuration file.
-# Use this to configure your system environment (it replaces /etc/nixos/configuration.nix)
 { inputs
 , lib
 , config
@@ -11,39 +9,22 @@
     ./hardware-configuration.nix
   ];
 
-  # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "murkrow"; # Define your hostname.
-  networking.useDHCP = false;
-  networking.nameservers = [ "1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one" ];
 
-  services.resolved = {
-    enable = true;
-    dnssec = "true";
-    domains = [ "~." ];
-    fallbackDns = [ "1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one" ];
-    dnsovertls = "true";
-  };
-
-  #networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-  services.xserver.libinput = {
+  services.libinput = {
     enable = true;
     touchpad.naturalScrolling = true;
   };
+   services.passSecretService.enable = true;
 
-  # Enable networking
   networking.networkmanager.enable = true;
+  services.resolved.enable = true;
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  # Set your time zone.
   time.timeZone = "Europe/Lisbon";
-  # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
 
   i18n.extraLocaleSettings = {
@@ -67,9 +48,11 @@
   # Configure keymap in X11
   services.xserver = {
     enable = true;
-    layout = "pt";
-    xkbVariant = "";
-    xkbOptions = "crtl:nocaps";
+    xkb = {
+    	variant = "";
+        layout = "pt";
+        options = "ctrl:nocaps";
+    };
 
     desktopManager = {
       xterm.enable = false;
@@ -79,17 +62,14 @@
         enableXfwm = false;
       };
     };
-    displayManager.defaultSession = "xfce+i3";
     windowManager.i3.enable = true;
   };
+  services.displayManager.defaultSession = "xfce+i3";
 
-  services.picom.enable = true;
+  services.openssh.enable = true;
 
-  # Configure console keymap
   console.keyMap = "pt-latin1";
 
-  # Enable sound with pipewire.
-  sound.enable = true;
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
@@ -105,7 +85,7 @@
     gpuOffset = -60;
   };
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
+  users.defaultUserShell = pkgs.zsh;
   users.users.rofis = {
     isNormalUser = true;
     description = "Rodrigo Carreira";
@@ -124,36 +104,57 @@
     users.rofis = import ../../modules/home.nix;
   };
 
-  # Install firefox.
-  programs.firefox.enable = true;
+  programs = {
+    firefox.enable = true;
+    zsh = {
+      enable = true;
+      enableCompletion = true;
+      syntaxHighlighting.enable = true;
+      autosuggestions.enable = true;
+      histSize = 10000;
+      promptInit = "source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
 
-  # Allow unfree packages
+      shellAliases = {
+        rebuild = "sudo nixos-rebuild switch --flake .#";
+        ls = "eza -l --git --icons=always --group-directories-first";
+        c = "clear";
+        cat = "bat";
+        grep = "rg";
+        dots = "cd ~/dotfiles && nvim";
+      };
+
+      ohMyZsh = {
+        enable = true;
+        plugins = [
+          "git"
+        ];
+        theme = "powerlevel10k";
+      };
+    };
+  };
+
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
     neovim
-    alacritty
     git
+    alacritty
     tlp
     discord
     neofetch
     htop
-    lua
-    gcc
-    nodejs
-    yarn
     fzf
     eza
-    gettext
-    lf
-    wget
     curl
     tmux
     ripgrep
-    rustc
-    cargo
     lazygit
+    zsh-powerlevel10k
+    github-desktop
+    yarn
+    xclip
+    bat
   ];
 
-  system.stateVersion = "23.11"; # Did you read the comment?
+  system.stateVersion = "24.05";
 }

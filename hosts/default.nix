@@ -53,6 +53,7 @@
         grep = "rg";
         dots = "cd ~/dotfiles && nvim";
         gc = "nix-collect-garbage -d";
+        neofetch = "fastfetch";
       };
     };
   };
@@ -63,7 +64,7 @@
     neovim
     github-desktop
     alacritty
-    neofetch
+    fastfetch
     fzf
     eza
     curl
@@ -79,6 +80,7 @@
     lazygit
     bat
     htop
+    flameshot
   ];
 
   # User

@@ -50,6 +50,10 @@
     plasma-browser-integration
     konsole
     oxygen
+    spectacle
+    elisa
+    okular
+    ark
   ];
 
   programs = {
@@ -82,6 +86,7 @@
     stremio
     gwe
     gparted
+    libsForQt5.kmix
   ];
 
   system.stateVersion = "24.05";

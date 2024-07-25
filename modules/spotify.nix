@@ -17,8 +17,8 @@
       enabledExtensions = with spicePkgs.extensions; [
         adblock
         shuffle
+        hidePodcasts
       ];
-      theme = spicePkgs.themes.sleek;
-      colorScheme = "dracula";
+      theme = spicePkgs.themes.burntSienna;
     };
 }

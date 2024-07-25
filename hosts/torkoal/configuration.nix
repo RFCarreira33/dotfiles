@@ -3,6 +3,7 @@
   imports =
     [
       ./hardware-configuration.nix
+      ../default.nix
       inputs.home-manager.nixosModules.home-manager
     ];
 
@@ -18,36 +19,7 @@
     };
   };
 
-  users.defaultUserShell = pkgs.zsh;
-  services.passSecretService.enable = true;
-  services.resolved.enable = true;
-  nix.gc = {
-    automatic = true;
-    dates = "daily";
-    options = "--delete-older-than 2d";
-  };
-
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
   networking.hostName = "torkoal";
-
-  time.timeZone = "Europe/Lisbon";
-
-  i18n = {
-    defaultLocale = "en_US.UTF-8";
-    extraLocaleSettings = {
-      LC_ADDRESS = "pt_PT.UTF-8";
-      LC_IDENTIFICATION = "pt_PT.UTF-8";
-      LC_MEASUREMENT = "pt_PT.UTF-8";
-      LC_MONETARY = "pt_PT.UTF-8";
-      LC_NAME = "pt_PT.UTF-8";
-      LC_NUMERIC = "pt_PT.UTF-8";
-      LC_PAPER = "pt_PT.UTF-8";
-      LC_TELEPHONE = "pt_PT.UTF-8";
-      LC_TIME = "pt_PT.UTF-8";
-    };
-  };
-
 
   services = {
     displayManager.sddm.enable = true;
@@ -80,34 +52,12 @@
     oxygen
   ];
 
-  console.keyMap = "pt-latin1";
   programs = {
-    firefox.enable = true;
     steam.enable = true;
-    zsh = {
+    tuxclocker = {
       enable = true;
-      enableCompletion = true;
-      syntaxHighlighting.enable = true;
-      autosuggestions.enable = true;
-      histSize = 10000;
-      promptInit = "source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
-
-      shellAliases = {
-        rebuild = "sudo nixos-rebuild switch --flake .#";
-        ls = "eza -l --git --icons=always --group-directories-first";
-        c = "clear";
-        cat = "bat";
-        grep = "rg";
-        dots = "cd ~/dotfiles && nvim";
-        gc = "nix-collect-garbage -d";
-      };
-
-      ohMyZsh = {
-        enable = true;
-        plugins = [
-          "git"
-        ];
-      };
+      useUnfree = true;
+      enabledNVIDIADevices = [ 1 1 1 1 ];
     };
   };
 
@@ -121,40 +71,17 @@
     pulse.enable = true;
   };
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.rofis = {
-    shell = pkgs.zsh;
-    isNormalUser = true;
-    description = "Rodrigo Carreira";
-    extraGroups = [ "networkmanager" "wheel" ];
-  };
-
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
     users.rofis = import ../../modules/home.nix;
   };
 
-  nixpkgs.config.allowUnfree = true;
-
-  fonts.packages = with pkgs; [
-    (nerdfonts.override { fonts = [ "Hack" ]; })
-  ];
-
   environment.systemPackages = with pkgs; [
-    discord
-    git
-    neovim
     google-chrome
-    github-desktop
-    alacritty
     hdparm
-    spotify
-    yarn
-    nodejs
     stremio
-    rustup
-    gcc
-    tmux
+    gwe
+    gparted
   ];
 
   system.stateVersion = "24.05";

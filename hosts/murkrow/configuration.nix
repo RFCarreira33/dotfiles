@@ -3,6 +3,7 @@
   imports = [
     inputs.home-manager.nixosModules.home-manager
     ./hardware-configuration.nix
+    ../default.nix
   ];
 
   boot.loader.systemd-boot.enable = true;
@@ -10,35 +11,7 @@
 
   networking.hostName = "murkrow"; # Define your hostname.
 
-  services.passSecretService.enable = true;
-  services.resolved.enable = true;
-  nix.gc = {
-    automatic = true;
-    dates = "daily";
-    options = "--delete-older-than 2d";
-  };
-
   networking.networkmanager.enable = true;
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
-  time.timeZone = "Europe/Lisbon";
-  i18n.defaultLocale = "en_US.UTF-8";
-
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "pt_PT.UTF-8";
-    LC_IDENTIFICATION = "pt_PT.UTF-8";
-    LC_MEASUREMENT = "pt_PT.UTF-8";
-    LC_MONETARY = "pt_PT.UTF-8";
-    LC_NAME = "pt_PT.UTF-8";
-    LC_NUMERIC = "pt_PT.UTF-8";
-    LC_PAPER = "pt_PT.UTF-8";
-    LC_TELEPHONE = "pt_PT.UTF-8";
-    LC_TIME = "pt_PT.UTF-8";
-  };
-  console.keyMap = "pt-latin1";
-  users.defaultUserShell = pkgs.zsh;
-
-  nixpkgs.config.allowUnfree = true;
 
   services.libinput = {
     enable = true;
@@ -66,9 +39,6 @@
   };
   services.displayManager.defaultSession = "xfce+i3";
 
-  services.openssh.enable = true;
-
-
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
@@ -84,74 +54,13 @@
     gpuOffset = -60;
   };
 
-  users.users.rofis = {
-    isNormalUser = true;
-    description = "Rodrigo Carreira";
-    extraGroups = [ "networkmanager" "wheel" ];
-  };
-
-  fonts.packages = with pkgs; [
-    noto-fonts
-    noto-fonts-cjk
-    noto-fonts-emoji
-    (nerdfonts.override { fonts = [ "Hack" ]; })
-  ];
-
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
     users.rofis = import ../../modules/home.nix;
   };
 
-  programs = {
-    firefox.enable = true;
-    zsh = {
-      enable = true;
-      enableCompletion = true;
-      syntaxHighlighting.enable = true;
-      autosuggestions.enable = true;
-      histSize = 10000;
-      promptInit = "source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
-
-      shellAliases = {
-        rebuild = "sudo nixos-rebuild switch --flake .#";
-        ls = "eza -l --git --icons=always --group-directories-first";
-        c = "clear";
-        cat = "bat";
-        grep = "rg";
-        dots = "cd ~/dotfiles && nvim";
-      };
-
-      ohMyZsh = {
-        enable = true;
-        plugins = [
-          "git"
-        ];
-        theme = "powerlevel10k";
-      };
-    };
-  };
-
   environment.systemPackages = with pkgs; [
-    neovim
-    git
-    alacritty
     tlp
-    discord
-    neofetch
-    htop
-    fzf
-    eza
-    curl
-    tmux
-    ripgrep
-    lazygit
-    zsh-powerlevel10k
-    github-desktop
-    yarn
-    xclip
-    bat
-    rustup
-    gcc
   ];
 
   system.stateVersion = "24.05";

@@ -3,7 +3,9 @@
   programs.alacritty = {
     enable = true;
     settings = {
-      font.size = 11;
+      env.TERM = "xterm-256color";
+
+      font.size = 12;
       window = {
         padding = {
           x = 2;

@@ -1,0 +1,98 @@
+{ inputs, lib, config, pkgs, ... }:
+{
+  #Locale
+  time.timeZone = "Europe/Lisbon";
+  console.keyMap = "pt-latin1";
+
+  i18n = {
+    defaultLocale = "en_US.UTF-8";
+    extraLocaleSettings = {
+      LC_ADDRESS = "pt_PT.UTF-8";
+      LC_IDENTIFICATION = "pt_PT.UTF-8";
+      LC_MEASUREMENT = "pt_PT.UTF-8";
+      LC_MONETARY = "pt_PT.UTF-8";
+      LC_NAME = "pt_PT.UTF-8";
+      LC_NUMERIC = "pt_PT.UTF-8";
+      LC_PAPER = "pt_PT.UTF-8";
+      LC_TELEPHONE = "pt_PT.UTF-8";
+      LC_TIME = "pt_PT.UTF-8";
+    };
+  };
+
+  nixpkgs.config.allowUnfree = true;
+  nix = {
+    settings.experimental-features = [ "nix-command" "flakes" ];
+    gc = {
+      automatic = true;
+      dates = "daily";
+      options = "--delete-older-than 2d";
+    };
+  };
+
+  # Packages and services
+  services = {
+    passSecretService.enable = true;
+    resolved.enable = true;
+  };
+
+  programs = {
+    firefox.enable = true;
+    zsh = {
+      enable = true;
+      enableCompletion = true;
+      syntaxHighlighting.enable = true;
+      autosuggestions.enable = true;
+      histSize = 10000;
+      promptInit = "source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
+
+      shellAliases = {
+        rebuild = "sudo nixos-rebuild switch --flake .#";
+        ls = "eza -l --git --icons=always --group-directories-first";
+        c = "clear";
+        cat = "bat";
+        grep = "rg";
+        dots = "cd ~/dotfiles && nvim";
+        gc = "nix-collect-garbage -d";
+      };
+    };
+  };
+
+  environment.systemPackages = with pkgs; [
+    discord
+    git
+    neovim
+    github-desktop
+    alacritty
+    neofetch
+    fzf
+    eza
+    curl
+    tmux
+    zsh-powerlevel10k
+    rustup
+    gcc
+    xclip
+    wget
+    yarn
+    nodejs
+    ripgrep
+    lazygit
+    bat
+    htop
+  ];
+
+  # User
+  users.defaultUserShell = pkgs.zsh;
+  users.users.rofis = {
+    isNormalUser = true;
+    description = "Rodrigo Carreira";
+    extraGroups = [ "networkmanager" "wheel" ];
+  };
+
+  fonts.packages = with pkgs; [
+    noto-fonts
+    noto-fonts-cjk
+    noto-fonts-emoji
+    (nerdfonts.override { fonts = [ "Hack" ]; })
+  ];
+}

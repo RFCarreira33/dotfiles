@@ -4,6 +4,7 @@
     ./neovim.nix
     ./alacritty.nix
     ./spotify.nix
+    ./tmux.nix
   ];
 
   nixpkgs = {
@@ -13,17 +14,27 @@
     };
   };
 
-  home = {
-    username = "rofis";
-    homeDirectory = "/home/rofis";
-  };
-
   programs = {
     home-manager.enable = true;
     git = {
       enable = true;
       userName = "RFCarreira33";
       userEmail = "rodrigocarreira33@gmail.com";
+    };
+  };
+
+  home = {
+    username = "rofis";
+    homeDirectory = "/home/rofis";
+    file = {
+      ".p10k.zsh" = {
+        source = ../home/.p10k.zsh;
+        executable = true;
+      };
+      ".ideavimrc" = {
+        source = ../home/.ideavimrc;
+        executable = true;
+      };
     };
   };
 

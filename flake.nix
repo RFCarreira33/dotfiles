@@ -10,10 +10,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    spicetify-nix = {
-      url = "github:Gerg-L/spicetify-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    stylix.url = "github:danth/stylix";
+    spicetify-nix.url = "github:Gerg-L/spicetify-nix";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
   };
 
@@ -21,7 +19,6 @@
     { self
     , nixpkgs
     , home-manager
-    , spicetify-nix
     , ...
     } @ inputs:
     let
@@ -34,6 +31,7 @@
           modules = [
             ./hosts/murkrow/configuration.nix
             inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t480s
+            inputs.stylix.nixosModules.stylix
           ];
         };
 
@@ -41,6 +39,7 @@
           specialArgs = { inherit system inputs; };
           modules = [
             ./hosts/torkoal/configuration.nix
+            inputs.stylix.nixosModules.stylix
           ];
         };
       };

@@ -5,6 +5,7 @@
     ./alacritty.nix
     ./spotify.nix
     ./tmux.nix
+    #./i3.nix
   ];
 
   nixpkgs = {
@@ -15,7 +16,9 @@
   };
 
   programs = {
-    home-manager.enable = true;
+    home-manager = {
+      enable = true;
+    };
     git = {
       enable = true;
       userName = "RFCarreira33";

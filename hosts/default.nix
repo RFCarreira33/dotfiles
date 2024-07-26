@@ -1,5 +1,37 @@
 { inputs, lib, config, pkgs, ... }:
 {
+  stylix = with pkgs; {
+    enable = true;
+    base16Scheme = "${base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
+    polarity = "dark";
+    fonts = lib.mkDefault {
+      monospace = {
+        package = nerdfonts.override {fonts = ["Hack"];};
+        name = "Hack Nerd Font Mono";
+      };
+      sansSerif = {
+        package = dejavu_fonts;
+        name = "DejaVu Sans";
+      };
+      serif = {
+        package = dejavu_fonts;
+        name = "DejaVu Serif";
+      };
+      emoji = {
+        package = noto-fonts-color-emoji;
+        name = "Noto Color Emoji";
+      };
+    };
+    image = ../resources/wall.jpg;
+  };
+
+  fonts.packages = with pkgs; [
+    noto-fonts
+    noto-fonts-color-emoji
+    noto-fonts-cjk
+    (nerdfonts.override { fonts = [ "Hack" ]; })
+  ];
+
   #Locale
   time.timeZone = "Europe/Lisbon";
   console.keyMap = "pt-latin1";
@@ -44,6 +76,7 @@
       autosuggestions.enable = true;
       histSize = 10000;
       promptInit = "source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
+      shellInit = "[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh";
 
       shellAliases = {
         rebuild = "sudo nixos-rebuild switch --flake .#";
@@ -79,8 +112,9 @@
     ripgrep
     lazygit
     bat
-    htop
+    btop
     flameshot
+    fd
   ];
 
   # User
@@ -88,13 +122,6 @@
   users.users.rofis = {
     isNormalUser = true;
     description = "Rodrigo Carreira";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "audio"];
   };
-
-  fonts.packages = with pkgs; [
-    noto-fonts
-    noto-fonts-cjk
-    noto-fonts-emoji
-    (nerdfonts.override { fonts = [ "Hack" ]; })
-  ];
 }

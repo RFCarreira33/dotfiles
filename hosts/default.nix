@@ -1,4 +1,4 @@
-{ inputs, lib, config, pkgs, ... }:
+{ lib, pkgs, ... }:
 {
   stylix = with pkgs; {
     enable = true;
@@ -6,7 +6,7 @@
     polarity = "dark";
     fonts = lib.mkDefault {
       monospace = {
-        package = nerdfonts.override {fonts = ["Hack"];};
+        package = nerdfonts.override { fonts = [ "Hack" ]; };
         name = "Hack Nerd Font Mono";
       };
       sansSerif = {
@@ -91,37 +91,45 @@
     };
   };
 
-  environment.systemPackages = with pkgs; [
-    discord
-    git
-    neovim
-    github-desktop
-    alacritty
-    fastfetch
-    fzf
-    eza
-    curl
-    tmux
-    zsh-powerlevel10k
-    rustup
-    gcc
-    xclip
-    wget
-    yarn
-    nodejs
-    ripgrep
-    lazygit
-    bat
-    btop
-    flameshot
-    fd
-  ];
+  environment = {
+    shells = [ pkgs.zsh ];
+    sessionVariables = {
+      FLAKE = "/home/rofis/dotfiles";
+    };
+    systemPackages = with pkgs; [
+      discord
+      git
+      neovim
+      github-desktop
+      alacritty
+      fastfetch
+      fzf
+      eza
+      curl
+      tmux
+      zsh-powerlevel10k
+      rustup
+      gcc
+      xclip
+      wget
+      yarn
+      nodejs
+      ripgrep
+      lazygit
+      bat
+      btop
+      flameshot
+      fd
+    ];
+  };
 
   # User
-  users.defaultUserShell = pkgs.zsh;
-  users.users.rofis = {
-    isNormalUser = true;
-    description = "Rodrigo Carreira";
-    extraGroups = [ "networkmanager" "wheel" "audio"];
+  users = {
+    defaultUserShell = pkgs.zsh;
+    users.rofis = {
+      isNormalUser = true;
+      description = "Rodrigo Carreira";
+      extraGroups = [ "networkmanager" "wheel" "audio" ];
+    };
   };
 }

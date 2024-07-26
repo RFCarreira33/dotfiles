@@ -1,11 +1,8 @@
-{ inputs, lib, config, pkgs, ... }:
+{ username, ... }:
 {
   imports = [
-    ./neovim.nix
-    ./alacritty.nix
-    ./spotify.nix
-    ./tmux.nix
-    #./i3.nix
+    ./graphical/default.nix
+    ./terminal/default.nix
   ];
 
   nixpkgs = {
@@ -27,8 +24,8 @@
   };
 
   home = {
-    username = "rofis";
-    homeDirectory = "/home/rofis";
+    username = username;
+    homeDirectory = "/home/${username}";
     file = {
       ".p10k.zsh" = {
         source = ../home/.p10k.zsh;

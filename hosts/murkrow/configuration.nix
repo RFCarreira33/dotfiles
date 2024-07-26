@@ -1,7 +1,6 @@
-{ inputs, lib, config, pkgs, ... }:
+{ inputs, lib, config, pkgs, username, ... }:
 {
   imports = [
-    inputs.home-manager.nixosModules.home-manager
     ./hardware-configuration.nix
     ../default.nix
   ];
@@ -76,8 +75,8 @@
   };
 
   home-manager = {
-    extraSpecialArgs = { inherit inputs; };
-    users.rofis = import ../../modules/home.nix;
+    extraSpecialArgs = { inherit inputs username; };
+    users.${username} = import ./home.nix;
   };
 
   environment.systemPackages = with pkgs; [

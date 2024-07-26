@@ -1,10 +1,9 @@
-{ inputs, lib, config, pkgs, ... }:
+{ inputs, lib, config, pkgs, username, ... }:
 {
   imports =
     [
       ./hardware-configuration.nix
       ../default.nix
-      inputs.home-manager.nixosModules.home-manager
     ];
 
   boot.loader = {
@@ -17,6 +16,13 @@
         efi   /efi/Manjaro/grubx64.efi
       '';
     };
+  };
+
+  stylix.fonts.sizes = {
+    terminal = 12;
+    desktop = 10;
+    applications = 10;
+    popups = 10;
   };
 
   networking.hostName = "torkoal";
@@ -46,24 +52,27 @@
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
 
-  environment.plasma5.excludePackages = with pkgs.libsForQt5; [
-    plasma-browser-integration
-    konsole
-    oxygen
-    spectacle
-    elisa
-    okular
-    ark
-  ];
-
-  programs = {
-    steam.enable = true;
-    tuxclocker = {
-      enable = true;
-      useUnfree = true;
-      enabledNVIDIADevices = [ 1 1 1 1 ];
-    };
+  environment = {
+    plasma5.excludePackages = with pkgs.libsForQt5; [
+      plasma-browser-integration
+      konsole
+      oxygen
+      spectacle
+      elisa
+      okular
+      ark
+    ];
+    systemPackages = with pkgs; [
+      google-chrome
+      hdparm
+      stremio
+      gwe
+      gparted
+      libsForQt5.kmix
+    ];
   };
+
+  programs.steam.enable = true;
 
   # Enable sound with pipewire.
   hardware.pulseaudio.enable = false;
@@ -76,18 +85,9 @@
   };
 
   home-manager = {
-    extraSpecialArgs = { inherit inputs; };
-    users.rofis = import ../../modules/home.nix;
+    extraSpecialArgs = { inherit inputs username; };
+    users.${username} = import ./home.nix;
   };
-
-  environment.systemPackages = with pkgs; [
-    google-chrome
-    hdparm
-    stremio
-    gwe
-    gparted
-    libsForQt5.kmix
-  ];
 
   system.stateVersion = "24.05";
 }

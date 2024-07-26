@@ -19,34 +19,34 @@
     { self
     , nixpkgs
     , home-manager
+    , stylix
+    , nixos-hardware
     , ...
     } @ inputs:
     let
       system = "x86_64-linux";
+      username = "rofis";
     in
     {
       nixosConfigurations = {
         murkrow = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit system inputs; };
+          specialArgs = { inherit system inputs username; };
           modules = [
             ./hosts/murkrow/configuration.nix
             inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t480s
             inputs.stylix.nixosModules.stylix
+            inputs.home-manager.nixosModules.home-manager
           ];
         };
 
         torkoal = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit system inputs; };
+          specialArgs = { inherit system inputs username; };
           modules = [
             ./hosts/torkoal/configuration.nix
             inputs.stylix.nixosModules.stylix
+            inputs.home-manager.nixosModules.home-manager
           ];
         };
-      };
-
-      homeConfigurations.rofis = home-manager.lib.homeManagerConfiguration {
-        extraSpecialArgs = { inherit inputs; };
-        modules = [ ./modules/home.nix ];
       };
     };
 }

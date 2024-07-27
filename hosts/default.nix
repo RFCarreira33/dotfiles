@@ -79,7 +79,7 @@
       shellInit = "[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh";
 
       shellAliases = {
-        rebuild = "sudo nixos-rebuild switch --flake .#";
+        rebuild = "sudo nixos-rebuild switch --flake $FLAKE.#";
         ls = "eza -l --git --icons=always --group-directories-first";
         c = "clear";
         cat = "bat";
@@ -94,7 +94,7 @@
   environment = {
     shells = [ pkgs.zsh ];
     sessionVariables = {
-      FLAKE = "/home/rofis/dotfiles";
+      FLAKE = "/home/rofis/dotfiles/";
     };
     systemPackages = with pkgs; [
       discord

@@ -1,4 +1,7 @@
 { inputs, lib, config, pkgs, username, ... }:
+let 
+  backup_ext = "backup-" + pkgs.lib.readFile "${pkgs.runCommand "timestamp" {} "echo -n `date '+%Y%m%d%H%M%S'` > $out"}";
+in
 {
   imports = [
     ./hardware-configuration.nix
@@ -75,6 +78,7 @@
   };
 
   home-manager = {
+    backupFileExtension = backup_ext;
     extraSpecialArgs = { inherit inputs username; };
     users.${username} = import ./home.nix;
   };

@@ -1,4 +1,7 @@
 { inputs, lib, config, pkgs, username, ... }:
+let 
+  backup_ext = "backup-" + pkgs.lib.readFile "${pkgs.runCommand "timestamp" {} "echo -n `date '+%Y%m%d%H%M%S'` > $out"}";
+in
 {
   imports =
     [
@@ -66,25 +69,28 @@
       google-chrome
       hdparm
       stremio
-      gwe
       gparted
-      libsForQt5.kmix
+      libsForQt5.plasma-pa
     ];
   };
 
-  programs.steam.enable = true;
+  programs = {
+    steam.enable = true;
+    tuxclocker = {
+      enable = true;
+      useUnfree = true;
+      enabledNVIDIADevices = [ 1 1 1 1 1 ];
+    };
+  };
 
-  # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
+  nixpkgs.config.pulseaudio = true;
+  hardware.pulseaudio = {
     enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
+    extraConfig = "load-module module-combine-sink";
   };
 
   home-manager = {
+    backupFileExtension = backup_ext;
     extraSpecialArgs = { inherit inputs username; };
     users.${username} = import ./home.nix;
   };

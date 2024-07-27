@@ -1,3 +1,0 @@
-* linguist-vendored
-*.lua linguist-vendored=false
-*.nix linguist-vendored=false

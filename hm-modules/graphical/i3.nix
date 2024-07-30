@@ -68,15 +68,6 @@
       ];
     };
 
-    programs.rofi = {
-      enable = true;
-      terminal = "alacritty";
-      plugins = with pkgs; [
-        rofi-power-menu
-        rofi-file-browser
-      ];
-    };
-
     programs.i3status-rust = {
       enable = true;
       bars = {
@@ -116,6 +107,15 @@
           theme = "gruvbox-dark";
         };
       };
+    };
+
+    programs.rofi = {
+      enable = true;
+      terminal = "alacritty";
+      plugins = with pkgs; [
+        rofi-power-menu
+        rofi-file-browser
+      ];
     };
 
     xdg = {

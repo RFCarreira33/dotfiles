@@ -1,5 +1,5 @@
 { inputs, lib, config, pkgs, username, ... }:
-let 
+let
   backup_ext = "backup-" + pkgs.lib.readFile "${pkgs.runCommand "timestamp" {} "echo -n `date '+%Y%m%d%H%M%S'` > $out"}";
 in
 {
@@ -36,6 +36,9 @@ in
     xserver = {
       enable = true;
       desktopManager.plasma5.enable = true;
+      deviceSection = ''
+      Option "Coolbits" "31"
+      '';
 
       xkb = {
         layout = "pt";
@@ -71,16 +74,14 @@ in
       stremio
       gparted
       libsForQt5.plasma-pa
+      gwe
+      libreoffice-qt
+      gpu-screen-recorder-gtk
     ];
   };
 
   programs = {
     steam.enable = true;
-    tuxclocker = {
-      enable = true;
-      useUnfree = true;
-      enabledNVIDIADevices = [ 1 1 1 1 1 ];
-    };
   };
 
   nixpkgs.config.pulseaudio = true;

@@ -1,5 +1,5 @@
-{ inputs, lib, config, pkgs, username, ... }:
-let 
+{ inputs, lib, config, pkgs, vars, ... }:
+let
   backup_ext = "backup-" + pkgs.lib.readFile "${pkgs.runCommand "timestamp" {} "echo -n `date '+%Y%m%d%H%M%S'` > $out"}";
 in
 {
@@ -8,7 +8,9 @@ in
     ../default.nix
   ];
 
-  stylix.fonts.sizes = {
+  programs.hyprland.enable = true;
+
+  stylix.fonts.sizes = lib.mkDefault {
     terminal = 10;
     desktop = 14;
     applications = 14;
@@ -27,43 +29,24 @@ in
 
   networking.networkmanager.enable = true;
 
-  # Configure keymap in X11
   services = {
-    displayManager.defaultSession = "xfce+i3";
     xserver = {
       enable = true;
-      xkb = {
-        variant = "";
-        layout = "pt";
-        options = "ctrl:nocaps";
-      };
-
-      desktopManager = {
-        xterm.enable = false;
-        xfce = {
-          enable = true;
-          noDesktop = true;
-          enableXfwm = false;
-        };
-      };
-      windowManager.i3 = {
+      displayManager.gdm = {
         enable = true;
-        package = pkgs.i3-gaps;
-        extraPackages = with pkgs; [
-          rofi
-          i3status-rust
-        ];
+        wayland = true;
       };
     };
   };
-
   nixpkgs.config.pulseaudio = true;
-  hardware.pulseaudio = {
-    enable = true;
-    extraConfig = "load-module module-combine-sink";
-  };
+  hardware.pulseaudio.enable = false;
 
   security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    pulse.enable = true;
+  };
 
   services = {
     undervolt = {
@@ -79,14 +62,15 @@ in
 
   home-manager = {
     backupFileExtension = backup_ext;
-    extraSpecialArgs = { inherit inputs username; };
-    users.${username} = import ./home.nix;
+    extraSpecialArgs = { inherit inputs vars; };
+    users.${vars.username} = import ./home.nix;
   };
 
   environment.systemPackages = with pkgs; [
     tlp
     pavucontrol
     alsa-utils
+    libsForQt5.dolphin
   ];
 
   system.stateVersion = "24.05";

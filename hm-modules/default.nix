@@ -1,4 +1,4 @@
-{ username, ... }:
+{ vars, ... }:
 {
   imports = [
     ./graphical/default.nix
@@ -24,8 +24,8 @@
   };
 
   home = {
-    username = username;
-    homeDirectory = "/home/${username}";
+    username = vars.username;
+    homeDirectory = "/home/${vars.username}";
     file = {
       ".p10k.zsh" = {
         source = ../home/.p10k.zsh;

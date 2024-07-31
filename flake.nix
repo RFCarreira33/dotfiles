@@ -10,6 +10,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+    hyprland-plugins = {
+      url = "github:hyprwm/hyprland-plugins";
+      inputs.hyprland.follows = "hyprland";
+    };
     stylix.url = "github:danth/stylix";
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
@@ -24,13 +29,15 @@
     , ...
     } @ inputs:
     let
-      system = "x86_64-linux";
-      username = "rofis";
+      vars = {
+        system = "x86_64-linux";
+        username = "rofis";
+      };
     in
     {
       nixosConfigurations = {
         murkrow = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit system inputs username; };
+          specialArgs = { inherit vars inputs; };
           modules = [
             ./hosts/murkrow/configuration.nix
             inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t480s
@@ -40,7 +47,7 @@
         };
 
         torkoal = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit system inputs username; };
+          specialArgs = { inherit inputs vars; };
           modules = [
             ./hosts/torkoal/configuration.nix
             inputs.stylix.nixosModules.stylix

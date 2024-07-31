@@ -1,4 +1,4 @@
-{ inputs, lib, config, pkgs, username, ... }:
+{ inputs, lib, config, pkgs, vars, ... }:
 let
   backup_ext = "backup-" + pkgs.lib.readFile "${pkgs.runCommand "timestamp" {} "echo -n `date '+%Y%m%d%H%M%S'` > $out"}";
 in
@@ -37,7 +37,7 @@ in
       enable = true;
       desktopManager.plasma5.enable = true;
       deviceSection = ''
-      Option "Coolbits" "31"
+        Option "Coolbits" "31"
       '';
 
       xkb = {
@@ -92,8 +92,8 @@ in
 
   home-manager = {
     backupFileExtension = backup_ext;
-    extraSpecialArgs = { inherit inputs username; };
-    users.${username} = import ./home.nix;
+    extraSpecialArgs = { inherit inputs vars; };
+    users.${vars.username} = import ./home.nix;
   };
 
   system.stateVersion = "24.05";

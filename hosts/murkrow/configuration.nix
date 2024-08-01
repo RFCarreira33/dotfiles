@@ -9,6 +9,7 @@ in
   ];
 
   programs.hyprland.enable = true;
+  hardware.brillo.enable = true;
 
   stylix.fonts.sizes = lib.mkDefault {
     terminal = 10;
@@ -51,12 +52,29 @@ in
   services = {
     undervolt = {
       enable = true;
-      coreOffset = -90;
-      gpuOffset = -60;
+      coreOffset = -80;
+      gpuOffset = -50;
     };
     libinput = {
       enable = true;
       touchpad.naturalScrolling = true;
+    };
+    tlp = {
+      enable = true;
+      settings = {
+        PLATFORM_PROFILE_ON_BAT = "balanced";
+        CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
+        CPU_BOOST_ON_BAT = 1;
+        CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
+        MEM_SLEEP_ON_BAT = "deep";
+
+        PLATFORM_PROFILE_ON_AC = "performance";
+        CPU_ENERGY_PERF_POLICY_ON_AC = "balance_performance";
+        CPU_BOOST_ON_AC = 1;
+        CPU_SCALING_GOVERNOR_ON_AC = "performance";
+
+        WOL_DISABLE = "Y";
+      };
     };
   };
 
@@ -67,7 +85,6 @@ in
   };
 
   environment.systemPackages = with pkgs; [
-    tlp
     pavucontrol
     alsa-utils
     libsForQt5.dolphin

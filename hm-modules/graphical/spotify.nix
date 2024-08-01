@@ -22,7 +22,8 @@
           shuffle
           hidePodcasts
         ];
-        theme = spicePkgs.themes.burntSienna;
+        theme = spicePkgs.themes.onepunch;
+        colorScheme = "dark";
       };
   };
 }

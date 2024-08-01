@@ -21,20 +21,6 @@ in
       };
     };
 
-    home = {
-      sessionVariables = {
-        NIXOS_OZONE_WL = "1";
-        LIBVA_DRIVER_NAME = "iHD";
-      };
-      packages = with pkgs; [
-        dunst
-        rofi-wayland
-        wdisplays
-        wl-clipboard
-        wl-mirror
-      ];
-    };
-
     wayland.windowManager.hyprland = {
       enable = true;
       xwayland.enable = true;
@@ -73,7 +59,7 @@ in
             "tray"
           ];
           battery = {
-            format = " {capacity}% {power:4.2f} W {icon} ";
+            format = " {capacity}% {power:4.2f}w {icon} ";
             format-alt = "{time}";
             format-icons = [ "" "" "" "" "" ];
             format-plugged = " {capacity}%  {power:4.2f} ";
@@ -106,23 +92,13 @@ in
 
       style = with config.lib.stylix.colors; ''
         * {
-        	font-size: 15px;
+        	font-size: 10px;
         	font-family: Hack;
         }
 
         window#waybar {
         	background: #${base00};
         	color: #${base07};
-        }
-
-        #custom-right-arrow-dark,
-        #custom-left-arrow-dark {
-        	color: #1a1a1a;
-        }
-        #custom-right-arrow-light,
-        #custom-left-arrow-light {
-        	color: #292b2e;
-        	background: #1a1a1a;
         }
 
         #workspaces,

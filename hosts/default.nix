@@ -65,6 +65,14 @@
   services = {
     passSecretService.enable = true;
     resolved.enable = true;
+    xserver = {
+      enable = true;
+      xkb = {
+        variant = "";
+        layout = "pt";
+        options = "ctrl:nocaps";
+      };
+    };
   };
 
   programs = {
@@ -120,6 +128,8 @@
       btop
       flameshot
       fd
+      s-tui
+      stress
     ];
   };
 

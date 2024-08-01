@@ -6,10 +6,10 @@ in
   imports = [
     ./hardware-configuration.nix
     ../default.nix
+    ../../modules/default.nix
   ];
 
-  programs.hyprland.enable = true;
-  hardware.brillo.enable = true;
+  hyprland.enable = true;
 
   stylix.fonts.sizes = lib.mkDefault {
     terminal = 10;
@@ -30,18 +30,7 @@ in
 
   networking.networkmanager.enable = true;
 
-  services = {
-    xserver = {
-      enable = true;
-      displayManager.gdm = {
-        enable = true;
-        wayland = true;
-      };
-    };
-  };
-  nixpkgs.config.pulseaudio = true;
   hardware.pulseaudio.enable = false;
-
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -86,8 +75,6 @@ in
 
   environment.systemPackages = with pkgs; [
     pavucontrol
-    alsa-utils
-    libsForQt5.dolphin
   ];
 
   system.stateVersion = "24.05";

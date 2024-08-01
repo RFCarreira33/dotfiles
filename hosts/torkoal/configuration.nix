@@ -3,11 +3,13 @@ let
   backup_ext = "backup-" + pkgs.lib.readFile "${pkgs.runCommand "timestamp" {} "echo -n `date '+%Y%m%d%H%M%S'` > $out"}";
 in
 {
-  imports =
-    [
-      ./hardware-configuration.nix
-      ../default.nix
-    ];
+  imports = [
+    ./hardware-configuration.nix
+    ../default.nix
+    ../../modules/default.nix
+  ];
+
+  kde5.enable = true;
 
   boot.loader = {
     efi.canTouchEfiVariables = true;
@@ -31,20 +33,11 @@ in
   networking.hostName = "torkoal";
 
   services = {
-    displayManager.sddm.enable = true;
-
     xserver = {
-      enable = true;
-      desktopManager.plasma5.enable = true;
       deviceSection = ''
         Option "Coolbits" "31"
       '';
 
-      xkb = {
-        layout = "pt";
-        variant = "";
-        options = "ctrl:nocaps";
-      };
       videoDrivers = [ "nvidia" ];
     };
   };
@@ -58,36 +51,26 @@ in
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
 
-  environment = {
-    plasma5.excludePackages = with pkgs.libsForQt5; [
-      plasma-browser-integration
-      konsole
-      oxygen
-      spectacle
-      elisa
-      okular
-      ark
-    ];
-    systemPackages = with pkgs; [
-      google-chrome
-      hdparm
-      stremio
-      gparted
-      libsForQt5.plasma-pa
-      gwe
-      libreoffice-qt
-      gpu-screen-recorder-gtk
-    ];
-  };
+  environment.systemPackages = with pkgs; [
+    google-chrome
+    hdparm
+    stremio
+    gparted
+    gwe
+    libreoffice-qt
+    gpu-screen-recorder-gtk
+  ];
 
   programs = {
     steam.enable = true;
   };
 
-  nixpkgs.config.pulseaudio = true;
-  hardware.pulseaudio = {
+  hardware.pulseaudio.enable = false;
+  security.rtkit.enable = true;
+  services.pipewire = {
     enable = true;
-    extraConfig = "load-module module-combine-sink";
+    alsa.enable = true;
+    pulse.enable = true;
   };
 
   home-manager = {

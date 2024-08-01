@@ -23,6 +23,19 @@
     };
   };
 
+  services.gammastep = {
+    enable = true;
+    tray = false;
+    latitude = 39.77;
+    longitude = -8.79;
+    duskTime = "18:00-20:00";
+    dawnTime = "06:00-08:00";
+    temperature = {
+      day = 6500;
+      night = 3100;
+    };
+  };
+
   home = {
     username = vars.username;
     homeDirectory = "/home/${vars.username}";

@@ -87,12 +87,12 @@
       shellInit = "[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh";
 
       shellAliases = {
-        rebuild = "sudo nixos-rebuild switch --flake $FLAKE.#";
+        rebuild = "sudo nixos-rebuild switch --flake $DOTFILES";
         ls = "eza -l --git --icons=always --group-directories-first";
         c = "clear";
         cat = "bat";
         grep = "rg";
-        dots = "cd ~/dotfiles && nvim";
+        dots = "cd $DOTFILES && nvim";
         gc = "nix-collect-garbage -d";
         neofetch = "fastfetch";
       };
@@ -102,7 +102,7 @@
   environment = {
     shells = [ pkgs.zsh ];
     sessionVariables = {
-      FLAKE = "/home/rofis/dotfiles/";
+      DOTFILES = "/home/rofis/dotfiles/";
     };
     systemPackages = with pkgs; [
       discord
@@ -130,6 +130,10 @@
       fd
       s-tui
       stress
+      zip
+      rar
+      unzip
+      unrar
     ];
   };
 

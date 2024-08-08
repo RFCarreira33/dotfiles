@@ -68,6 +68,7 @@ in
   };
 
   home-manager = {
+    useGlobalPkgs = true;
     backupFileExtension = backup_ext;
     extraSpecialArgs = { inherit inputs vars; };
     users.${vars.username} = import ./home.nix;

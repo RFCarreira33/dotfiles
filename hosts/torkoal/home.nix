@@ -5,4 +5,5 @@
   ];
 
   spotifyModule.enable = true;
+  chromeModule.enable = true;
 }

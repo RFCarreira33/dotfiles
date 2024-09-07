@@ -33,6 +33,17 @@ return {
     },
   },
 
+  {
+    "f-person/git-blame.nvim",
+    event = "VeryLazy",
+    opts = {
+      enabled = false,
+      message_template = " <summary> • <date> • <author>",
+      date_format = "%m-%d-%Y",
+      virtual_text_column = 4,
+    },
+  },
+
   'tpope/vim-commentary',
 
   {
@@ -65,8 +76,8 @@ return {
   {
     "lervag/vimtex",
     lazy = false,
-    ft = {"tex", "latex"},
-    config = function ()
+    ft = { "tex", "latex" },
+    config = function()
       local g = vim.g
       g.vimtex_quickfix_mode = 0
       g.vimtex_view_method = 'zathura'

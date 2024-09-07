@@ -26,13 +26,13 @@ return {
 
     require('mason').setup({})
     require('mason-lspconfig').setup({
-      ensure_installed = { 'tsserver', 'rust_analyzer', 'lua_ls' },
+      ensure_installed = { 'rust_analyzer', 'lua_ls' },
       handlers = {
         lsp_zero.default_setup,
       }
     })
 
-    lsp_zero.setup_servers({ 'tsserver', 'rust_analyzer', 'lua_ls' })
+    lsp_zero.setup_servers({'rust_analyzer', 'lua_ls' })
 
     local cmp = require('cmp')
     local cmp_select = { behavior = cmp.SelectBehavior.Select }
@@ -62,7 +62,7 @@ return {
 
     local lspconfig = require('lspconfig')
 
-    lspconfig.tsserver.setup({
+    lspconfig.ts_ls.setup({
       single_file_support = false,
       on_init = function(client)
         client.server_capabilities.documentFormattingProvider = false

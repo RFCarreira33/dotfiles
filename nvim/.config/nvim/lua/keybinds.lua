@@ -14,6 +14,7 @@ keymap('v', '<leader>y', '"+y')
 keymap('n', '<leader>y', '"+Y')
 keymap('v', '<leader>p', '"_dP')
 
+keymap('n', '<leader>tb', '<cmd>GitBlameToggle<cr>')
 keymap('n', '<C-Up>', '<cmd>resize +2<cr>')
 keymap('n', '<C-Down>', '<cmd>resize -2<cr>')
 keymap('n', '<C-Left>', '<cmd>vertical resize -2<cr>')

@@ -10,14 +10,20 @@ in
   networking.hostName = "magneton";
   services.nix-daemon.enable = true;
   security.pam.enableSudoTouchIdAuth = true;
-  nix.settings.experimental-features = "nix-command flakes";
+
+  nix = {
+    settings.experimental-features = [ "nix-command" "flakes" ];
+    gc = {
+      automatic = true;
+      interval = {
+        Hour = 21;
+      };
+    };
+  };
 
   stylixModule.enable = true;
   stylix.fonts.sizes = lib.mkDefault {
-    terminal = 12;
-    desktop = 12;
-    applications = 10;
-    popups = 12;
+    terminal = 14;
   };
 
   programs.zsh = {
@@ -53,14 +59,14 @@ in
   environment = {
     shells = [ pkgs.zsh ];
     shellAliases = {
-        rebuild = "darwin-rebuild switch --flake $DOTFILES";
-        ls = "eza -l --git --icons=always --group-directories-first";
-        c = "clear";
-        cat = "bat";
-        grep = "rg";
-        dots = "cd $DOTFILES && nvim";
-        gc = "nix-collect-garbage -d";
-        neofetch = "fastfetch";
+      rebuild = "darwin-rebuild switch --flake $DOTFILES";
+      ls = "eza -l --git --icons=always --group-directories-first";
+      c = "clear";
+      cat = "bat";
+      grep = "rg";
+      dots = "cd $DOTFILES && nvim";
+      gc = "nix-collect-garbage -d";
+      neofetch = "fastfetch";
     };
 
     variables.DOTFILES = "/Users/rofis/dotfiles/";
@@ -71,7 +77,6 @@ in
       eza
       curl
       tmux
-      zsh-powerlevel10k
       gcc
       wget
       yarn
@@ -84,7 +89,8 @@ in
       unzip
       unrar
       zsh-powerlevel10k
-      gcc
+      libiconv
+      rustup
     ];
   };
 
@@ -95,9 +101,6 @@ in
       "alacritty"
       "discord"
       "spotify"
-    ];
-    brews = [
-      "rustup"
     ];
   };
 

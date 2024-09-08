@@ -32,7 +32,7 @@ return {
       }
     })
 
-    lsp_zero.setup_servers({'rust_analyzer', 'lua_ls' })
+    lsp_zero.setup_servers({ 'rust_analyzer', 'lua_ls', 'write_good', 'nixpkgs_fmt' })
 
     local cmp = require('cmp')
     local cmp_select = { behavior = cmp.SelectBehavior.Select }
@@ -70,7 +70,7 @@ return {
       end,
     })
 
-    lspconfig.pyright.setup{}
+    lspconfig.pyright.setup {}
 
     lspconfig.clangd.setup({
       cmd = { 'clangd', '--background-index' },
@@ -79,6 +79,5 @@ return {
         client.server_capabilities.documentRangeFormattingProvider = false
       end,
     })
-
   end
 }

@@ -32,7 +32,7 @@ return {
       }
     })
 
-    lsp_zero.setup_servers({ 'rust_analyzer', 'lua_ls', 'write_good', 'nixpkgs_fmt' })
+    lsp_zero.setup_servers({ 'rust_analyzer', 'lua_ls' })
 
     local cmp = require('cmp')
     local cmp_select = { behavior = cmp.SelectBehavior.Select }

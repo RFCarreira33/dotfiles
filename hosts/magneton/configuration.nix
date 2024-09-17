@@ -101,6 +101,8 @@ in
       "alacritty"
       "discord"
       "spotify"
+      "blender"
+      "jetbrains-toolbox"
     ];
   };
 

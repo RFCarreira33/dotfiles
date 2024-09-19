@@ -7,6 +7,12 @@
       displayManager.defaultSession = "xfce+i3";
 
       xserver = {
+        videoDrivers = [ "intel" ];
+        deviceSection = ''
+          Option "DRI" "2"
+          Option "TearFree" "true"
+        '';
+
         desktopManager = {
           xterm.enable = false;
           xfce = {

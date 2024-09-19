@@ -20,7 +20,7 @@
             position = "top";
             statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs ~/.config/i3status-rust/config-top.toml";
             fonts = lib.mkForce {
-              names = [ "Hack" "FpmtAwesome5Free" ];
+              names = [ "Hack" "FontAwesome5Free" ];
               size = 11.0;
             };
           }
@@ -48,24 +48,6 @@
             "${modifier}+Shift+k" = "move up";
           };
       };
-    };
-
-    services.picom = {
-      enable = true;
-      vSync = true;
-      inactiveOpacity = 0.75;
-      opacityRules = [
-        "100:class_g = 'Spotify' && focused"
-        "80:class_g = 'Spotify' && !focused"
-        "100:class_g = 'firefox' && focused"
-        "80:class_g = 'firefox' && !focused"
-        "100:class_g = 'Rofi'"
-        "95:window_type = 'normal' && focused"
-        "85:window_type = 'normal' && !focused"
-        "100:window_type = 'dialog'"
-        "100:window_type = 'popup_menu'"
-        "95:window_type = 'notification'"
-      ];
     };
 
     programs.i3status-rust = {
@@ -96,6 +78,10 @@
             }
             {
               block = "sound";
+              click = [{
+                button = "left";
+                cmd = "pavucontrol";
+              }];
             }
             {
               block = "time";

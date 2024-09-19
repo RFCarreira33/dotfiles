@@ -9,13 +9,13 @@ in
     ../../modules/default.nix
   ];
 
-  hyprland.enable = true;
+  i3.enable = true;
 
   stylix.fonts.sizes = lib.mkDefault {
-    terminal = 10;
-    desktop = 14;
-    applications = 14;
-    popups = 12;
+    terminal = 8;
+    desktop = 10;
+    applications = 12;
+    popups = 10;
   };
 
   boot.loader = {
@@ -75,6 +75,9 @@ in
 
   environment.systemPackages = with pkgs; [
     pavucontrol
+    man
+    gnumake
+    gengetopt
   ];
 
   system.stateVersion = "24.05";

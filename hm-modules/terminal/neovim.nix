@@ -21,6 +21,14 @@
       plugins = with pkgs.vimPlugins; [
         lazy-nvim
       ];
+
+      extraPackages = with pkgs; [
+        clang-tools
+        lua-language-server
+        pyright
+        write-good
+        typescript
+      ];
     };
   };
 }

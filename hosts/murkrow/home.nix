@@ -5,5 +5,6 @@
   ];
 
   spotifyModule.enable = true;
-  hyprlandModule.enable = true;
+  i3Module.enable = true;
+  chromeModule.enable = true;
 }

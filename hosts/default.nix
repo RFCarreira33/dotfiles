@@ -102,6 +102,7 @@
       rar
       unzip
       unrar
+      python3
     ];
   };
 

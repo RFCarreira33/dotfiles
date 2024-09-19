@@ -1,6 +1,9 @@
 { lib, config, pkgs, ... }:
 {
-  options.neovimModule.enable = lib.mkEnableOption "Enables neovim module";
+  options.neovimModule = {
+    enable = lib.mkEnableOption "Enables neovim module";
+    enableLsp = lib.mkEnableOption "Install Lsp servers via nix packages";
+  };
 
   config = lib.mkIf config.neovimModule.enable {
     xdg = {
@@ -22,7 +25,7 @@
         lazy-nvim
       ];
 
-      extraPackages = with pkgs; [
+      extraPackages = with pkgs; lib.mkIf config.neovimModule.enableLsp [
         clang-tools
         lua-language-server
         pyright

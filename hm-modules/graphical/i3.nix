@@ -33,7 +33,7 @@
           lib.mkOptionDefault {
             # shortcuts
             "${modifier}+q" = "kill";
-            "${modifier}+b" = "exec firefox";
+            "${modifier}+b" = "exec chromium";
             "${modifier}+p" = "exec rofi -show power-menu -modi power-menu:rofi-power-menu";
             "${modifier}+Shift+f" = "exec rofi -show file-browser-extended";
 
@@ -75,13 +75,6 @@
               block = "battery";
               format = " $icon {$percentage $power.eng(w:4)} ";
               full_format = " $icon  Full ";
-            }
-            {
-              block = "sound";
-              click = [{
-                button = "left";
-                cmd = "pavucontrol";
-              }];
             }
             {
               block = "time";

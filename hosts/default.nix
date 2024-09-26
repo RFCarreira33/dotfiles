@@ -93,7 +93,7 @@
       ripgrep
       lazygit
       bat
-      btop
+      htop
       flameshot
       fd
       s-tui
@@ -103,6 +103,7 @@
       unzip
       unrar
       python3
+      geckodriver
     ];
   };
 

@@ -91,6 +91,7 @@ in
       zsh-powerlevel10k
       libiconv
       rustup
+      geckodriver
     ];
   };
 

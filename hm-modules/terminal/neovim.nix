@@ -31,6 +31,9 @@
         pyright
         write-good
         typescript
+        nixfmt-rfc-style
+        nil
+        rust-analyzer
       ];
     };
   };

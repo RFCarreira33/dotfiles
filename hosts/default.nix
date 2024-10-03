@@ -104,8 +104,11 @@
       unrar
       python3
       geckodriver
+      man-pages 
+      man-pages-posix
     ];
   };
+  documentation.dev.enable = true;
 
   # User
   users = {

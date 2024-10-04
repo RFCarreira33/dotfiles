@@ -26,13 +26,7 @@ in
     terminal = 14;
   };
 
-  programs.zsh = {
-    enable = true;
-    enableCompletion = true;
-    enableSyntaxHighlighting = true;
-    promptInit = "source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
-    loginShellInit = "[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh";
-  };
+  programs.zsh.enable = true;
 
   nixpkgs = {
     hostPlatform = "aarch64-darwin";
@@ -58,18 +52,6 @@ in
 
   environment = {
     shells = [ pkgs.zsh ];
-    shellAliases = {
-      rebuild = "darwin-rebuild switch --flake $DOTFILES";
-      ls = "eza -l --git --icons=always --group-directories-first";
-      c = "clear";
-      cat = "bat";
-      grep = "rg";
-      dots = "cd $DOTFILES && nvim";
-      gc = "nix-collect-garbage -d";
-      neofetch = "fastfetch";
-    };
-
-    variables.DOTFILES = "/Users/rofis/dotfiles/";
     systemPackages = with pkgs; [
       neovim
       fastfetch

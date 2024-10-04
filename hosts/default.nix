@@ -45,33 +45,11 @@
 
   programs = {
     firefox.enable = true;
-    zsh = {
-      enable = true;
-      enableCompletion = true;
-      syntaxHighlighting.enable = true;
-      autosuggestions.enable = true;
-      histSize = 10000;
-      promptInit = "source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
-      shellInit = "[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh";
-
-      shellAliases = {
-        rebuild = "sudo nixos-rebuild switch --flake $DOTFILES";
-        ls = "eza -l --git --icons=always --group-directories-first";
-        c = "clear";
-        cat = "bat";
-        grep = "rg";
-        dots = "cd $DOTFILES && nvim";
-        gc = "nix-collect-garbage -d";
-        neofetch = "fastfetch";
-      };
-    };
+    zsh.enable = true;
   };
 
   environment = {
     shells = [ pkgs.zsh ];
-    sessionVariables = {
-      DOTFILES = "/home/rofis/dotfiles/";
-    };
     systemPackages = with pkgs; [
       discord
       git

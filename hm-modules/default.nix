@@ -2,9 +2,12 @@
 let
   is_nixos =
     if pkgs.system == "x86_64-linux"
-      then true 
+      then true
     else 
       false;
+
+  home_path = if is_nixos then "/home" else "/Users";
+  uni_repo = "developer/enginearingmylastbraincell";
 in
 {
   imports = [
@@ -51,6 +54,7 @@ in
         cat = "bat";
         grep = "rg";
         dots = "cd $DOTFILES && nvim";
+        uni = "cd $SCHOOL";
         gc = "nix-collect-garbage -d";
         neofetch = "fastfetch";
       };
@@ -61,11 +65,10 @@ in
   home = {
     username = vars.username;
     homeDirectory = lib.mkDefault "/home/${vars.username}";
-    sessionVariables.DOTFILES =
-    if is_nixos
-      then "/home/${vars.username}/dotfiles/"
-    else 
-      "/Users/${vars.username}/dotfiles/";
+    sessionVariables = {
+      DOTFILES = "${home_path}/${vars.username}/dotfiles/";
+      SCHOOL = "${home_path}/${vars.username}/${uni_repo}/";
+    };
 
     file = {
       ".p10k.zsh" = {

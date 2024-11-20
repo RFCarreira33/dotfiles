@@ -94,7 +94,7 @@
     users.rofis = {
       isNormalUser = true;
       description = "Rodrigo Carreira";
-      extraGroups = [ "networkmanager" "wheel" "audio" "video" ];
+      extraGroups = [ "networkmanager" "wheel" "audio" "video" "scanner" "lp" ];
     };
   };
 }

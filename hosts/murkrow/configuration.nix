@@ -38,6 +38,15 @@ in
     pulse.enable = true;
   };
 
+  services.printing = {
+    enable = true;
+    drivers = with pkgs; [ epson-escpr ];
+  };
+  hardware.sane = {
+    enable = true;
+    extraBackends = [ pkgs.epkowa ];
+  };
+
   services = {
     undervolt = {
       enable = true;
@@ -78,6 +87,7 @@ in
     man
     gnumake
     gengetopt
+    epsonscan2
   ];
 
   system.stateVersion = "24.05";

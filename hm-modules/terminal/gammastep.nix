@@ -8,7 +8,7 @@
       tray = false;
       latitude = 39.77;
       longitude = -8.79;
-      duskTime = "18:00-20:00";
+      duskTime = "17:00-20:00";
       dawnTime = "06:00-08:00";
       temperature = {
         day = 6500;

@@ -28,6 +28,8 @@
           extraPackages = with pkgs; [
             rofi
             i3status-rust
+            rofi-power-menu
+            rofi-file-browser
           ];
         };
       };

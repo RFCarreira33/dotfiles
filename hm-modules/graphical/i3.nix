@@ -35,7 +35,7 @@
             "${modifier}+q" = "kill";
             "${modifier}+b" = "exec chromium";
             "${modifier}+p" = "exec rofi -show power-menu -modi power-menu:rofi-power-menu";
-            "${modifier}+Shift+f" = "exec rofi -show file-browser-extended";
+            "${modifier}+Shift+f" = "exec rofi -show filebrowser";
 
             # vim like
             "${modifier}+l" = "focus right";
@@ -91,10 +91,6 @@
     programs.rofi = {
       enable = true;
       terminal = "alacritty";
-      plugins = with pkgs; [
-        rofi-power-menu
-        rofi-file-browser
-      ];
     };
 
     xdg = {

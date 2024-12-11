@@ -88,6 +88,8 @@ in
     gnumake
     gengetopt
     epsonscan2
+    zathura
+    texliveFull
   ];
 
   system.stateVersion = "24.05";

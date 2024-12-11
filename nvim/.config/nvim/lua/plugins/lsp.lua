@@ -26,7 +26,6 @@ return {
 
     require('mason').setup({})
     require('mason-lspconfig').setup({
-      ensure_installed = { 'rust_analyzer', 'lua_ls' },
       handlers = {
         lsp_zero.default_setup,
       }
@@ -74,6 +73,13 @@ return {
 
     lspconfig.clangd.setup({
       cmd = { 'clangd', '--background-index' },
+      on_init = function(client)
+        client.server_capabilities.documentFormattingProvider = false
+        client.server_capabilities.documentRangeFormattingProvider = false
+      end,
+    })
+
+    lspconfig.texlab.setup({
       on_init = function(client)
         client.server_capabilities.documentFormattingProvider = false
         client.server_capabilities.documentRangeFormattingProvider = false

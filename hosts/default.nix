@@ -62,7 +62,8 @@
       curl
       tmux
       zsh-powerlevel10k
-      rustup
+      rustc
+      cargo
       gcc
       xclip
       wget

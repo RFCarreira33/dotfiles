@@ -34,6 +34,8 @@
         nixfmt-rfc-style
         nil
         rust-analyzer
+        rustfmt
+        texlab
       ];
     };
   };

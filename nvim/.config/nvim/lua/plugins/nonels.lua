@@ -12,6 +12,7 @@ return {
         formatting.black,
         formatting.nixpkgs_fmt,
         formatting.clang_format,
+        formatting.bibclean,
         diagnostics.write_good,
         diagnostics.djlint,
         diagnostics.golangci_lint,

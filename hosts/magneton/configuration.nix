@@ -74,6 +74,7 @@ in
       libiconv
       rustup
       geckodriver
+      python311
     ];
   };
 

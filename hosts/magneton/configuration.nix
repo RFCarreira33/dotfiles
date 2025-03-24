@@ -75,6 +75,7 @@ in
       rustup
       geckodriver
       python311
+      texliveFull
     ];
   };
 

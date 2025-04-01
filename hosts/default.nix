@@ -82,7 +82,6 @@
       unzip
       unrar
       python3
-      geckodriver
       man-pages 
       man-pages-posix
     ];

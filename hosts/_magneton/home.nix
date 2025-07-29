@@ -6,6 +6,5 @@
 
   neovimModule.enableLsp = false;
   spotifyModule.enable = false;
-  hyprlandModule.enable = false;
   gammaModule.enable = false;
 }

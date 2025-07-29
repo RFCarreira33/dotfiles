@@ -33,7 +33,7 @@
           lib.mkOptionDefault {
             # shortcuts
             "${modifier}+q" = "kill";
-            "${modifier}+b" = "exec chromium";
+            "${modifier}+b" = "exec firefox";
             "${modifier}+p" = "exec rofi -show power-menu -modi power-menu:rofi-power-menu";
             "${modifier}+Shift+f" = "exec rofi -show filebrowser";
 

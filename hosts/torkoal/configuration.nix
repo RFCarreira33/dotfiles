@@ -64,7 +64,7 @@ in
     steam.enable = true;
   };
 
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -78,5 +78,5 @@ in
     users.${vars.username} = import ./home.nix;
   };
 
-  system.stateVersion = "24.05";
+  system.stateVersion = "25.05";
 }

@@ -78,7 +78,6 @@
       s-tui
       stress
       zip
-      rar
       unzip
       unrar
       python3

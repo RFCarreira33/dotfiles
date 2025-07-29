@@ -5,11 +5,14 @@
   config = lib.mkIf config.stylixModule.enable {
     stylix = with pkgs; {
       enable = true;
-      base16Scheme = "${base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
+      base16Scheme = {
+        yaml = "${base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
+        use-ifd = "auto";
+      };
       polarity = "dark";
       fonts = lib.mkDefault {
         monospace = {
-          package = nerdfonts.override { fonts = [ "Hack" ]; };
+          package = nerd-fonts.hack;
           name = "Hack Nerd Font Mono";
         };
         sansSerif = {
@@ -29,10 +32,10 @@
     };
 
     fonts.packages = with pkgs; [
+      nerd-fonts.hack
       noto-fonts
       noto-fonts-color-emoji
-      noto-fonts-cjk
-      (nerdfonts.override { fonts = [ "Hack" ]; })
+      noto-fonts-cjk-sans
     ];
   };
 }

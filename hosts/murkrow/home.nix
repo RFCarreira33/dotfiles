@@ -1,10 +1,9 @@
-{ ... }:
+{ lib, ... }:
 {
   imports = [
     ../../hm-modules/default.nix
   ];
 
-  spotifyModule.enable = true;
+  spotifyModule.enable = false;
   i3Module.enable = true;
-  chromeModule.enable = true;
 }

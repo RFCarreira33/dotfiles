@@ -12,8 +12,8 @@ in
   i3.enable = true;
 
   stylix.fonts.sizes = lib.mkDefault {
-    terminal = 8;
-    desktop = 10;
+    terminal = 14;
+    desktop = 12;
     applications = 12;
     popups = 10;
   };
@@ -30,7 +30,7 @@ in
 
   networking.networkmanager.enable = true;
 
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -92,5 +92,5 @@ in
     texliveFull
   ];
 
-  system.stateVersion = "24.05";
+  system.stateVersion = "25.05";
 }

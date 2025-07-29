@@ -38,7 +38,7 @@ in
       history.size = 10000;
       oh-my-zsh.enable = true;
 
-      initExtra = "
+      initContent = "
         source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
         [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
       ";
@@ -84,5 +84,5 @@ in
 
   systemd.user.startServices = "sd-switch";
 
-  home.stateVersion = "24.05";
+  home.stateVersion = "25.05";
 }

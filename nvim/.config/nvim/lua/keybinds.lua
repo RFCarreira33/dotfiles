@@ -20,7 +20,6 @@ keymap('n', '<C-Left>', '<cmd>vertical resize -2<cr>')
 keymap('n', '<C-Right>', '<cmd>vertical resize +2<cr>')
 keymap('i', '<ESC>', '<ESC><cmd>w<CR>')
 keymap('n', '<ESC>', '<cmd>w<CR>')
-keymap('n', '<leader>form', '<cmd>:lua vim.lsp.buf.format()<CR>')
 
 keymap('n', '<C-u>', '<C-u>zz')
 keymap('n', '<C-d>', '<C-d>zz')

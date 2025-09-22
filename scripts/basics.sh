@@ -26,6 +26,7 @@ PACKAGES=(
   # langs
   "go"
   "rustup"
+  "htmlls"
 )
 
 check_command () {
@@ -72,3 +73,4 @@ fi
 
 rm -rf ~/.zshrc ~/.p10k.zsh ~/.tmux.conf ~/.config/nvim ~/.config/alacritty
 cd .. && stow nvim alacritty home
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm

@@ -154,12 +154,14 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# exec_always feh --bg-scale /usr/share/backgrounds/wall.jpg
+exec_always feh --bg-scale /usr/share/backgrounds/wall.jpg
+exec setxkbmap -option ctrl:nocaps
 gaps inner 10
 gaps outer -10
 for_window [class="^.*"] border pixel 1
 for_window [class="Spotify"] move to workspace 3
 for_window [class="Pavucontrol"] floating enable
+for_window [class="Firefox"] border pixel 0
 
 # Theme
 set $bg #282828

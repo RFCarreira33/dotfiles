@@ -1,10 +1,7 @@
 return {
-  "saghen/blink.cmp",
-  event = "LspAttach",
-  build = "...",
-  version = "1.*",
+  'saghen/blink.cmp',
+  version = '1.*',
   opts = {
-    cmdline = { enabled = false },
     keymap = {
       preset = "default",
       ['<C-space>'] = { 'show', 'show_documentation', 'hide_documentation' },
@@ -19,22 +16,17 @@ return {
       ['<Tab>'] = nil,
       ['<S-Tab>'] = nil,
     },
-    fuzzy = {
-      implementation = "prefer_rust",
-    },
-    sources = {
-      default = { "lsp", "path", "snippets", "buffer" },
-    },
-    signature = {
-      enabled = true,
-    },
-    completion = {
-      documentation = {
-        auto_show = true,
-      },
-    },
+
     appearance = {
-      nerd_font_variant = "normal",
+      nerd_font_variant = 'mono'
     },
+
+    completion = { documentation = { auto_show = false } },
+    sources = {
+      default = { 'lsp', 'path', 'snippets', 'buffer' },
+    },
+
+    fuzzy = { implementation = "prefer_rust_with_warning" }
   },
+  opts_extend = { "sources.default" }
 }

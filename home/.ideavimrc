@@ -22,8 +22,6 @@ nnoremap <Esc> :w<CR>
 nnoremap L :tabnext<CR>
 nnoremap H :tabprev<CR>\
 
-inoremap <Esc> <C-o>:w<CR>
-
 vnoremap < <gv
 vnoremap > >gv
 

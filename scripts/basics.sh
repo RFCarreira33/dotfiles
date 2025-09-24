@@ -29,6 +29,19 @@ PACKAGES=(
   "htmlls"
 )
 
+LSPS=(
+  "typescript-language-server"
+  "vscode-css-languageserver"
+  "vscode-html-languageserver"
+  "vue-language-server"
+  # npm install -g @vue/typescript-plugin
+  "lua-language-server"
+  "rust-analyzer"
+  "gopls"
+  "pyright"
+  "tailwindcss-language-server"
+)
+
 check_command () {
   command -v $1 >/dev/null 2>&1;
 }
@@ -70,6 +83,11 @@ if [ "$OS" == "Darwin" ]; then
 else
   check_command "cargo" || rustup default stable
 fi
+
+echo "Installing LSP servers..."
+for lsp in "${LSPS[@]}"; do
+  $PACKAGE_MANAGER $lsp
+done
 
 rm -rf ~/.zshrc ~/.p10k.zsh ~/.tmux.conf ~/.config/nvim ~/.config/alacritty
 cd .. && stow nvim alacritty home

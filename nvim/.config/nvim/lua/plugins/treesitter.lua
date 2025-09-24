@@ -1,3 +1,21 @@
+TREESITTER_LANGS = {
+  "python",
+  "json",
+  "typescript",
+  "tsx",
+  "html",
+  "css",
+  "lua",
+  "gitignore",
+  "vim",
+  "regex",
+  "bash",
+  "markdown",
+  "markdown_inline",
+  "rust",
+  "php"
+}
+
 return {
   "nvim-treesitter/nvim-treesitter",
   event = { "BufReadPre", "BufNewFile" },
@@ -10,20 +28,6 @@ return {
     highlight = { enable = true, },
     indent = { enable = true },
     autotag = { enable = true },
-    ensure_installed = {
-      "python",
-      "json",
-      "typescript",
-      "tsx",
-      "html",
-      "css",
-      "lua",
-      "gitignore",
-      "vim",
-      "regex",
-      "bash",
-      "markdown",
-      "markdown_inline",
-    },
+    ensure_installed = TREESITTER_LANGS,
   }
 }

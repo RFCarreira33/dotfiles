@@ -156,6 +156,7 @@ bindsym $mod+r mode "resize"
 
 exec_always feh --bg-scale /usr/share/backgrounds/wall.jpg
 exec setxkbmap -option ctrl:nocaps
+exec gammastep -l 39.77:-8.79 -t 6500:3100
 gaps inner 10
 gaps outer -10
 for_window [class="^.*"] border pixel 1

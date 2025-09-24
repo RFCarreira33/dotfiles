@@ -72,5 +72,10 @@ return {
       g.vimtex_view_method = 'zathura'
       g.vimtex_view_general_viewer = 'zathura'
     end
+  },
+
+  {
+    "mason-org/mason.nvim",
+    opts = {}
   }
 }

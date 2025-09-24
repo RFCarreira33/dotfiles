@@ -14,6 +14,15 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = '*',
+  callback = function()
+        if vim.tbl_contains(TREESITTER_LANGS, vim.bo.filetype) then
+           vim.treesitter.start()
+        end
+    end,
+})
+
 require("lazy").setup("plugins")
 require("lsp")
 

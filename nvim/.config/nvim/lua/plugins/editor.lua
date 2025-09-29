@@ -33,7 +33,7 @@ return {
     },
   },
 
-  'tpope/vim-commentary',
+  'tomtom/tcomment_vim',
 
   {
     'windwp/nvim-autopairs',

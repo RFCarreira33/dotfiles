@@ -2,6 +2,7 @@ TREESITTER_LANGS = {
   "python",
   "json",
   "typescript",
+  "javascript",
   "tsx",
   "html",
   "css",
@@ -13,7 +14,8 @@ TREESITTER_LANGS = {
   "markdown",
   "markdown_inline",
   "rust",
-  "php"
+  "php",
+  "vue"
 }
 
 return {

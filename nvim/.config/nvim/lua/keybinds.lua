@@ -31,6 +31,7 @@ keymap('n', '<leader>q', '<cmd>BufferClose<CR>')
 keymap('n', '<leader>ff', '<cmd>Telescope find_files<CR>')
 keymap('n', '<leader>fs', '<cmd>Telescope live_grep<CR>')
 
+keymap('n', '<leader>tb', '<cmd>GitBlameToggle<cr>')
 keymap('n', '<leader>sd', '<cmd>lua vim.diagnostic.open_float(0, {scope="line"})<CR>')
 keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>')
 keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>')

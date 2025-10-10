@@ -1,4 +1,8 @@
 TREESITTER_LANGS = {
+  "c",
+  "help",
+  "lua",
+  "vim",
   "python",
   "json",
   "typescript",

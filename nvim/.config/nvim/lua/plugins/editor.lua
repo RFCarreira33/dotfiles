@@ -76,8 +76,8 @@ return {
   {
     "lervag/vimtex",
     lazy = false,
-    ft = {"tex", "latex"},
-    config = function ()
+    ft = { "tex", "latex" },
+    config = function()
       local g = vim.g
       g.vimtex_quickfix_mode = 0
       g.vimtex_view_method = 'zathura'
@@ -88,5 +88,5 @@ return {
   {
     "mason-org/mason.nvim",
     opts = {}
-  }
+  },
 }

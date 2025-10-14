@@ -19,7 +19,9 @@ TREESITTER_LANGS = {
   "markdown_inline",
   "rust",
   "php",
-  "vue"
+  "vue",
+  "sql",
+  "java"
 }
 
 return {

@@ -13,6 +13,9 @@ local function get_jdtls_jvm_args()
     local arg = string.format('--jvm-arg=%s', a)
     table.insert(args, arg)
   end
+  -- add lombok support
+  local lombok_jar = vim.fn.expand("$MASON/share/jdtls/lombok.jar")
+  table.insert(args, string.format("--jvm-arg=-javaagent:%s", lombok_jar))
   return unpack(args)
 end
 

@@ -1,11 +1,11 @@
 return {
-  'nvim-lua/plenary.nvim',
-  'nvim-lua/popup.nvim',
-  'nvim-lua/telescope.nvim',
-  'jremmen/vim-ripgrep',
+  "nvim-lua/plenary.nvim",
+  "nvim-lua/popup.nvim",
+  "nvim-lua/telescope.nvim",
+  "jremmen/vim-ripgrep",
 
   {
-    'NvChad/nvim-colorizer.lua',
+    "NvChad/nvim-colorizer.lua",
     event = { "BufReadPre", "BufNewFile" },
     opts = {
       user_default_options = {
@@ -13,44 +13,49 @@ return {
         mode = "background",
         tailwind = false,
         virtualtext = "■",
-        always_update = true
+        always_update = true,
       },
     },
   },
 
-  'github/copilot.vim',
-  'lewis6991/gitsigns.nvim',
+  "github/copilot.vim",
+  "lewis6991/gitsigns.nvim",
 
-  'christoomey/vim-tmux-navigator',
+  "christoomey/vim-tmux-navigator",
 
   {
-    'lukas-reineke/indent-blankline.nvim',
+    "lukas-reineke/indent-blankline.nvim",
     main = "ibl",
     opts = {
-      indent = { char = '│' },
+      indent = { char = "│" },
       whitespace = { remove_blankline_trail = false },
       scope = { enabled = false },
     },
   },
 
-  'tomtom/tcomment_vim',
+  "tomtom/tcomment_vim",
 
   {
-    'windwp/nvim-autopairs',
+    "windwp/nvim-autopairs",
     event = "InsertEnter",
-    opts = {}
+    opts = {},
   },
 
-  'tpope/vim-surround',
+  "tpope/vim-surround",
 
   {
-    'windwp/nvim-spectre',
+    "windwp/nvim-spectre",
     keys = {
-      { '<leader>fr', function() require('spectre').open() end },
+      {
+        "<leader>fr",
+        function()
+          require("spectre").open()
+        end,
+      },
     },
   },
 
-  { 'akinsho/git-conflict.nvim', version = "*", config = true },
+  { "akinsho/git-conflict.nvim", version = "*", config = true },
 
   {
     "iamcco/markdown-preview.nvim",
@@ -80,13 +85,18 @@ return {
     config = function()
       local g = vim.g
       g.vimtex_quickfix_mode = 0
-      g.vimtex_view_method = 'zathura'
-      g.vimtex_view_general_viewer = 'zathura'
-    end
+      g.vimtex_view_method = "zathura"
+      g.vimtex_view_general_viewer = "zathura"
+    end,
   },
 
   {
-    "mason-org/mason.nvim",
-    opts = {}
+    "mason-org/mason-lspconfig.nvim",
+    opts = {
+    },
+    dependencies = {
+      { "mason-org/mason.nvim", opts = {} },
+      "neovim/nvim-lspconfig",
+    },
   },
 }

@@ -50,10 +50,10 @@ bindsym $mod+k focus up
 bindsym $mod+l focus right
 
 # alternatively, you can use the cursor keys:
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
+# bindsym $mod+Left focus left
+# bindsym $mod+Down focus down
+# bindsym $mod+Up focus up
+# bindsym $mod+Right focus right
 
 # move focused window
 bindsym $mod+Shift+h move left
@@ -126,6 +126,11 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'xfce4-session-logout'"
+
+# bind spotify controls
+bindsym $mod+Down exec "~/.config/i3/spotify_controls.sh play"
+bindsym $mod+Right exec "~/.config/i3/spotify_controls.sh next"
+bindsym $mod+Left exec "~/.config/i3/spotify_controls.sh prev"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {

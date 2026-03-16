@@ -86,7 +86,15 @@ return {
       local g = vim.g
       g.vimtex_quickfix_mode = 0
       g.vimtex_view_method = "zathura"
-      g.vimtex_view_general_viewer = "zathura"
+      g.vimtex_compiler_latexmk = {
+        executable = "latexmk",
+        options = {
+          "-pdf",
+          "-xelatex",
+          "-synctex=1",
+          "-interaction=nonstopmode",
+        },
+      }
     end,
   },
 

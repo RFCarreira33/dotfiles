@@ -35,3 +35,11 @@ vim.diagnostic.config({
   severity_sort = false,
   float = true,
 })
+
+-- Enable wrap for markdown and latex files
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = { 'markdown', 'tex' },
+  callback = function()
+    vim.opt_local.wrap = true
+  end,
+})

@@ -6,10 +6,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end
 
     keymap("K", vim.lsp.buf.hover, "Hover Documentation")
-    keymap("<leader>gd", vim.lsp.buf.definition, "Goto Declaration")
-    keymap("<leader>ca", vim.lsp.buf.code_action, "Code Action")
-    keymap("<leader>rn", vim.lsp.buf.rename, "Rename all references")
-    keymap("<leader>sd", vim.diagnostic.open_float, "Open Diagnostic Float")
-    keymap("<leader>form", vim.lsp.buf.format, "Format")
+	keymap("<leader>gd", vim.lsp.buf.definition, "Goto Declaration")
+	keymap("<leader>ca", vim.lsp.buf.code_action, "Code Action")
+	keymap("<leader>rn", vim.lsp.buf.rename, "Rename all references")
+	keymap("<leader>sd", vim.diagnostic.open_float, "Open Diagnostic Float")
+	keymap("<leader>form", vim.lsp.buf.format, "Format")
   end,
 })

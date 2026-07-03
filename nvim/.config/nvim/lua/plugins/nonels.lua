@@ -10,9 +10,11 @@ return {
         formatting.stylua,
         formatting.prettierd,
         formatting.black,
+        formatting.tidy,
         formatting.clang_format,
         diagnostics.write_good,
         diagnostics.djlint,
+        formatting.djlint,
       },
     })
   end,

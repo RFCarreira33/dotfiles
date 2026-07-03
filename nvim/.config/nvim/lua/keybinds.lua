@@ -18,8 +18,12 @@ keymap('n', '<C-Up>', '<cmd>resize +2<cr>')
 keymap('n', '<C-Down>', '<cmd>resize -2<cr>')
 keymap('n', '<C-Left>', '<cmd>vertical resize -2<cr>')
 keymap('n', '<C-Right>', '<cmd>vertical resize +2<cr>')
-keymap('i', '<ESC>', '<ESC><cmd>w<CR>')
-keymap('n', '<ESC>', '<cmd>w<CR>')
+
+-- Dont bind for specific filetypes
+if vim.bo.filetype ~= 'tex' then
+  keymap('i', '<ESC>', '<ESC><cmd>w<CR>')
+  keymap('n', '<ESC>', '<cmd>w<CR>')
+end
 
 keymap('n', '<C-u>', '<C-u>zz')
 keymap('n', '<C-d>', '<C-d>zz')

@@ -3,13 +3,13 @@
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 {self, inputs, ...}: {
 flake.nixosModules.murkrow = 
-	
 { config, pkgs, ... }:
 
 {
   imports =
     [
     	self.nixosModules.murkrowHardware
+        self.nixosModules.nvim
     ];
 
   # Use the systemd-boot EFI boot loader.
@@ -49,6 +49,7 @@ flake.nixosModules.murkrow =
   # Enable the X11 windowing system.
   # You can disable this if you're only using the Wayland session.
   services.xserver.enable = true;
+  services.resolved.enable = true;
 
   # Enable the KDE Plasma Desktop Environment.
   services.displayManager.sddm.enable = true;
@@ -88,13 +89,17 @@ flake.nixosModules.murkrow =
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
       kdePackages.kate
-      neovim
       git
       gcc
       glib
     #  thunderbird
     ];
   };
+  networking.nameservers = [
+    "1.1.1.1"
+    "8.8.8.8"
+  ];
+
 
   # Install firefox.
   programs.firefox.enable = true;

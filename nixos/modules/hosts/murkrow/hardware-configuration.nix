@@ -30,6 +30,7 @@ flake.nixosModules.murkrowHardware =
     [ { device = "/dev/disk/by-uuid/29e51be3-a3dd-4a99-8160-54151a15b7b1"; }
     ];
 
+  networking.useDHCP = lib.mkDefault true;
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 };

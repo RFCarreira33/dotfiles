@@ -8,6 +8,7 @@
       user
       locale
       nix-settings
+      zsh
     ];
   in {
     imports = [

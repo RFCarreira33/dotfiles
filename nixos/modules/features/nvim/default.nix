@@ -13,6 +13,30 @@
       	lazy-nvim
       ]; 
 
+      runtimePkgs = with pkgs; [
+        tree-sitter
+        ripgrep
+        gcc
+        fzf
+        lua-language-server
+        vscode-langservers-extracted
+        rust-analyzer
+        prettier
+        black
+        alejandra
+        rustfmt
+        python313Packages.python-lsp-server
+        typescript-language-server
+        tailwindcss-language-server
+        stylua
+        nixd
+        cargo
+        gnumake
+        lua5_1
+        imagemagick
+        luarocks
+      ];
+
       settings.config_directory = ./.;
     };
   };

@@ -13,7 +13,7 @@
       	lazy-nvim
       ]; 
 
-      settings.config_directory = ./nvim/.config/nvim/.;
+      settings.config_directory = ./.;
     };
   };
 }

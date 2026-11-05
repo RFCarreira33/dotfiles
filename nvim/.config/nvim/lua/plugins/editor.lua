@@ -18,7 +18,6 @@ return {
     },
   },
 
-  "github/copilot.vim",
   "lewis6991/gitsigns.nvim",
 
   "christoomey/vim-tmux-navigator",
@@ -106,6 +105,29 @@ return {
     dependencies = {
       { "mason-org/mason.nvim", opts = {} },
       "neovim/nvim-lspconfig",
+    },
+  },
+  {
+    "folke/sidekick.nvim",
+    opts = {
+      cli = {
+        tools = {
+          deepseek = {
+            cmd = { "ohdsh", "tui" },
+          },
+        },
+        mux = {
+          backend = "tmux",
+          enabled = true,
+        },
+      },
+    },
+    keys = {
+      {
+        "<leader>aa",
+        function() require("sidekick.cli").toggle() end,
+        desc = "Sidekick Toggle CLI",
+      },
     },
   },
 }

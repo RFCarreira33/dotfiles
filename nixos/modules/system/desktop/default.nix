@@ -11,6 +11,7 @@
       nvim
       alacritty
       tmux
+      sddm
     ];
 
   in {

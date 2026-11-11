@@ -9,7 +9,6 @@ flake.nixosModules.murkrow =
   imports =
     [
         self.nixosModules.desktop
-        self.nixosModules.nvim
     ];
 
   # Use the systemd-boot EFI boot loader.

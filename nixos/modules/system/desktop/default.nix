@@ -8,6 +8,9 @@
       core
       audio
       network
+      nvim
+      alacritty
+      tmux
     ];
 
   in {
@@ -19,6 +22,7 @@
 
     environment.systemPackages = with pkgs; [
       discord
+      stremio-linux-shell
     ];
   };
 }

@@ -1,15 +1,12 @@
-{ self, inputs, moduleWithSystem, ... }: {
-  flake.nixosModules.i3status-rust = moduleWithSystem({ pkgs, self', lib, ... }: {
-  });
+{ self, inputs, ... }: {
+  perSystem = { pkgs, self', ... }: {
+    packages.i3status-rust = inputs.wrapper-modules.lib.wrapPackage ({ ... }: {
+      inherit pkgs;
+      package = pkgs.i3status-rust;
 
-  perSystem = { pkgs, lib, self', ... }: {
-    packages.i3status-rust = inputs.wrapper-modules.lib.wrapPackage({...}: {
-        inherit pkgs;
-        package = pkgs.i3status-rust;
-        options = [
-          ./config.toml
-        ];
-      });
+      addFlag = [
+        ./config.toml
+      ];
+    });
   };
 }
-

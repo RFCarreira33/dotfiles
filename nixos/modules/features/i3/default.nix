@@ -25,12 +25,12 @@
           package = self'.packages.i3;
           extraPackages = with pkgs; [
             rofi
-            i3status-rust
+            # i3status-rust
             rofi-power-menu
             rofi-file-browser
             nerd-fonts.hack
           ] ++ (with self'.packages; [
-            # ftI3status-rust
+            i3status-rust
           ]);
         };
       };

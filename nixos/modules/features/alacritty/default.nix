@@ -2,12 +2,12 @@
   flake.nixosModules.alacritty = { pkgs, lib, ... }: {
     environment.systemPackages = [
       pkgs.nerd-fonts.hack
-      self.packages.${pkgs.stdenv.hostPlatform.system}.ftAlacritty
+      self.packages.${pkgs.stdenv.hostPlatform.system}.alacritty
     ];
   };
 
   perSystem = { pkgs, lib, self', ... }: {
-    packages.ftAlacritty = inputs.wrapper-modules.wrappers.alacritty.wrap {
+    packages.alacritty = inputs.wrapper-modules.wrappers.alacritty.wrap {
       inherit pkgs;
         settings = (builtins.fromTOML (builtins.readFile ./alacritty.toml ));
       };

@@ -20,10 +20,15 @@
     services.printing.enable = true;
 
     programs.firefox.enable = true;
+    nixpkgs.config.allowUnfree = true;
+    fonts.packages = [
+      pkgs.nerd-fonts.hack
+    ];
 
     environment.systemPackages = with pkgs; [
       discord
       stremio-linux-shell
+      gammastep
     ];
   };
 }

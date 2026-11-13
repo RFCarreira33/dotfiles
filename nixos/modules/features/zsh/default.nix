@@ -8,14 +8,14 @@
       syntaxHighlighting.enable = true;
       histSize = 10000;
 
-      package = self.packages.${pkgs.stdenv.hostPlatform.system}.ftZsh;
+      package = self.packages.${pkgs.stdenv.hostPlatform.system}.zsh;
     };
-    users.defaultUserShell = self'.packages.ftZsh;
+    users.defaultUserShell = self'.packages.zsh;
   });
 
   perSystem = { pkgs, lib, self', ... }: {
     packages = {
-        ftZsh = inputs.wrapper-modules.wrappers.zsh.wrap {
+        zsh = inputs.wrapper-modules.wrappers.zsh.wrap {
         inherit pkgs;
         runtimePkgs = [pkgs.devenv pkgs.fzf];
         zshrc.content = ''
@@ -27,10 +27,10 @@
           c = "clear";
           cat = lib.getExe pkgs.bat;
           grep = lib.getExe pkgs.ripgrep;
-          vim = lib.getExe self'.packages.ftNvim;
-          vi = lib.getExe self'.packages.ftNvim;
-          dots="cd ~/dotfiles && ${lib.getExe self'.packages.ftNvim}";
-          vimrc="${lib.getExe self'.packages.ftNvim} ~/dotfiles/nvim/.config/nvim";
+          vim = lib.getExe self'.packages.nvim;
+          vi = lib.getExe self'.packages.nvim;
+          dots="cd ~/dotfiles && ${lib.getExe self'.packages.nvim}";
+          vimrc="${lib.getExe self'.packages.nvim} ~/dotfiles/nvim/.config/nvim";
           rebuild = "sudo nixos-rebuild switch --impure --flake .";
         };
       };

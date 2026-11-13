@@ -2,14 +2,15 @@
   flake.nixosModules.tmux = { pkgs, lib, ... }: {
     programs.tmux = {
       enable = true;
-      package = self.packages.${pkgs.stdenv.hostPlatform.system}.ftTmux;
+      package = self.packages.${pkgs.stdenv.hostPlatform.system}.tmux;
     };
   };
 
   perSystem = { pkgs, lib, self', ... }: {
-    packages.ftTmux = inputs.wrapper-modules.wrappers.tmux.wrap {
+    packages.tmux = inputs.wrapper-modules.wrappers.tmux.wrap {
       inherit pkgs;
 
+      baseIndex = 0;
       configBefore = 
         let 
           lines = lib.splitString "\n" (builtins.readFile ./.tmux.conf);

@@ -2,12 +2,12 @@
   flake.nixosModules.nvim = { pkgs, lib, ... }: {
     programs.neovim = {
       enable = true;
-      package = self.packages.${pkgs.stdenv.hostPlatform.system}.ftNvim;
+      package = self.packages.${pkgs.stdenv.hostPlatform.system}.nvim;
     };
   };
 
   perSystem = { pkgs, lib, self', ... }: {
-    packages.ftNvim = inputs.wrapper-modules.wrappers.neovim.wrap {
+    packages.nvim = inputs.wrapper-modules.wrappers.neovim.wrap {
       inherit pkgs;
       specs.general = with pkgs.vimPlugins; [
       	lazy-nvim
@@ -35,6 +35,7 @@
         lua5_1
         imagemagick
         luarocks
+        # github-copilot-cli
       ];
 
       settings.config_directory = ./.;

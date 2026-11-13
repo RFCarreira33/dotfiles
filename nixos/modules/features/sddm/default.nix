@@ -4,7 +4,7 @@
     services.displayManager.sddm = {
       enable = true;
       theme = "sddm-astronaut-theme";
-      extraPackages = [pkgs.sddm-astronaut ];
+      extraPackages = [ pkgs.sddm-astronaut ];
     };
   };
 }

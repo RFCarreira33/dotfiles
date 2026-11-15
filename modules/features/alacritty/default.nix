@@ -6,11 +6,17 @@
     ];
   };
 
-  perSystem = { pkgs, lib, self', ... }: {
-    packages.alacritty = inputs.wrapper-modules.wrappers.alacritty.wrap {
-      inherit pkgs;
-        settings = (builtins.fromTOML (builtins.readFile ./alacritty.toml ));
+  perSystem =
+    {
+      pkgs,
+      lib,
+      self',
+      ...
+    }:
+    {
+      packages.alacritty = inputs.wrapper-modules.wrappers.alacritty.wrap {
+        inherit pkgs;
+        settings = (builtins.fromTOML (builtins.readFile ./alacritty.toml));
       };
-  };
+    };
 }
-

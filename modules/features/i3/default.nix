@@ -1,56 +1,82 @@
-{ self, inputs, moduleWithSystem, ... }: {
-  flake.nixosModules.i3 = moduleWithSystem({ pkgs, self', lib, ... }: {
-    services = {
-      displayManager.defaultSession = "xfce+i3";
+{
+  inputs,
+  moduleWithSystem,
+  ...
+}:
+{
+  flake.nixosModules.i3 = moduleWithSystem (
+    {
+      pkgs,
+      self',
+      lib,
+      ...
+    }:
+    {
+      services = {
+        displayManager.defaultSession = "xfce+i3";
 
-      xserver = {
-        enable = true;
-        deviceSection = ''
-          Option "DRI" "2"
-          Option "TearFree" "true"
-        '';
+        xserver = {
+          enable = true;
+          deviceSection = ''
+            Option "DRI" "2"
+            Option "TearFree" "true"
+          '';
 
-        desktopManager = {
-          xterm.enable = false;
-          xfce = {
+          desktopManager = {
+            xterm.enable = false;
+            xfce = {
+              enable = true;
+              noDesktop = true;
+              enableXfwm = false;
+            };
+          };
+
+          windowManager.i3 = {
             enable = true;
-            noDesktop = true;
-            enableXfwm = false;
+            package = self'.packages.i3;
+            extraPackages =
+              with pkgs;
+              [
+                nerd-fonts.hack
+              ]
+              ++ (with self'.packages; [
+                i3status-rust
+              ]);
           };
         };
-
-        windowManager.i3 = {
-          enable = true;
-          package = self'.packages.i3;
-          extraPackages = with pkgs; [
-            nerd-fonts.hack
-          ] ++ (with self'.packages; [
-            i3status-rust
-          ]);
-        };
       };
+    }
+  );
+
+  perSystem =
+    {
+      pkgs,
+      lib,
+      self',
+      ...
+    }:
+    {
+      packages.i3 = inputs.wrapper-modules.lib.wrapPackage (
+        { ... }: {
+          inherit pkgs;
+          package = pkgs.i3;
+
+          runtimePkgs =
+            with pkgs;
+            [
+              xrandr
+              xclip
+            ]
+            ++ (with self'.packages; [
+              rofi
+              zsh
+              alacritty
+            ]);
+
+          flags = {
+            "-c" = ./config;
+          };
+        }
+      );
     };
-  });
-
-  perSystem = { pkgs, lib, self', ... }: {
-    packages.i3 = inputs.wrapper-modules.lib.wrapPackage({...}: {
-        inherit pkgs;
-        package = pkgs.i3;
-
-        runtimePkgs = with pkgs; [
-          xrandr
-          xclip
-        ]
-        ++ (with self'.packages; [
-          rofi
-          zsh
-          alacritty
-        ]);
-
-        flags = {
-          "-c" = ./config;
-        };
-      });
-  };
 }
-

@@ -1,35 +1,38 @@
-{self, inputs, ...}: {
-  flake.nixosModules.desktop = {
-    pkgs,
-    lib,
-    ...
-  }: let 
-    modules = with self.nixosModules; [
-      core
-      audio
-      network
-      nvim
-      alacritty
-      tmux
-      sddm
-      stylix
-    ];
+{ self, inputs, ... }: {
+  flake.nixosModules.desktop =
+    {
+      pkgs,
+      lib,
+      ...
+    }:
+    let
+      modules = with self.nixosModules; [
+        core
+        audio
+        network
+        nvim
+        alacritty
+        tmux
+        sddm
+        stylix
+      ];
 
-  in {
-    imports = modules;
+    in
+    {
+      imports = modules;
 
-    services.printing.enable = true;
+      services.printing.enable = true;
 
-    programs = {
-      firefox.enable = true;
-      steam.enable = true;
+      programs = {
+        firefox.enable = true;
+        steam.enable = true;
+      };
+
+      environment.systemPackages = with pkgs; [
+        discord
+        stremio-linux-shell
+        gammastep
+        steam
+      ];
     };
-
-    environment.systemPackages = with pkgs; [
-      discord
-      stremio-linux-shell
-      gammastep
-      steam
-    ];
-  };
 }

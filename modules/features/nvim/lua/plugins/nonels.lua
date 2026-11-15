@@ -10,6 +10,7 @@ return {
         formatting.stylua,
         formatting.prettierd,
         formatting.black,
+        formatting.nixfmt,
         formatting.tidy,
         formatting.clang_format,
         diagnostics.write_good,

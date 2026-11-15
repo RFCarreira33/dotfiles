@@ -1,4 +1,4 @@
-{ self, inputs, ... }: {
+{ inputs, ... }: {
   flake.nixosModules.stylix = { pkgs, lib, ... }: {
     imports = [ inputs.stylix.nixosModules.stylix ];
 
@@ -38,4 +38,3 @@
     ];
   };
 }
-

@@ -21,6 +21,7 @@
       git
       curlWithGnuTls
       usbutils
+      lazygit
     ];
 
     system.stateVersion = "26.05";

@@ -12,6 +12,7 @@
       alacritty
       tmux
       sddm
+      stylix
     ];
 
   in {
@@ -19,16 +20,16 @@
 
     services.printing.enable = true;
 
-    programs.firefox.enable = true;
-    nixpkgs.config.allowUnfree = true;
-    fonts.packages = [
-      pkgs.nerd-fonts.hack
-    ];
+    programs = {
+      firefox.enable = true;
+      steam.enable = true;
+    };
 
     environment.systemPackages = with pkgs; [
       discord
       stremio-linux-shell
       gammastep
+      steam
     ];
   };
 }

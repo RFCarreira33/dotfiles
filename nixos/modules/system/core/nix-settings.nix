@@ -13,6 +13,17 @@
         };
     };
 
-    nixpkgs.config.allowUnfree = true;
+    nixpkgs = {
+      config = {
+        allowUnfree = true;
+        packageOverrides = pkgs: {
+          unstable = import inputs.nixpkgs-unstable {
+            config = {
+              allowUnfree = true;
+            };
+          };
+        };
+      };
+    };
   };
 }

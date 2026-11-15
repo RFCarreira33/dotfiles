@@ -5,11 +5,10 @@
 
       xserver = {
         enable = true;
-        # videoDrivers = [ "intel" ];
-        # deviceSection = ''
-        #   Option "DRI" "2"
-        #   Option "TearFree" "true"
-        # '';
+        deviceSection = ''
+          Option "DRI" "2"
+          Option "TearFree" "true"
+        '';
 
         desktopManager = {
           xterm.enable = false;
@@ -24,10 +23,6 @@
           enable = true;
           package = self'.packages.i3;
           extraPackages = with pkgs; [
-            rofi
-            # i3status-rust
-            rofi-power-menu
-            rofi-file-browser
             nerd-fonts.hack
           ] ++ (with self'.packages; [
             i3status-rust
@@ -45,13 +40,13 @@
         runtimePkgs = with pkgs; [
           xrandr
           xclip
+          rofi-power-menu
+          rofi-file-browser
         ]
-        ++ ([
-          {
-            data = self'.packages.alacritty;
-            prefix = true;
-          }
-          self'.packages.zsh
+        ++ (with self'.packages; [
+          rofi
+          zsh
+          alacritty
         ]);
 
         flags = {

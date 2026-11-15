@@ -4,6 +4,9 @@
       enable = true;
       package = self.packages.${pkgs.stdenv.hostPlatform.system}.nvim;
     };
+    environment.systemPackages = with pkgs; [
+      github-copilot-cli
+    ];
   };
 
   perSystem = { pkgs, lib, self', ... }: {
@@ -35,7 +38,6 @@
         lua5_1
         imagemagick
         luarocks
-        # github-copilot-cli
       ];
 
       settings.config_directory = ./.;

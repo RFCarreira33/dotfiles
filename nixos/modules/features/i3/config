@@ -39,8 +39,7 @@ tiling_drag modifier titlebar
 bindsym $mod+Return exec alacritty
 bindsym $mod+b exec firefox
 bindsym $mod+d exec "rofi -show drun -i"
-bindsym $mod+p exec "/home/rofis/.config/rofi/scripts/power.sh"
-bindsym $mod+w exec "/home/rofis/.config/rofi/scripts/wifi.sh"
+bindsym $mod+p exec "rofi -show -power-menu -modi power-menu:rofi-power-menu"
 bindsym $mod+q kill
 
 # change focus

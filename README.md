@@ -3,14 +3,16 @@
 >- Text editor: Neovim
 >- ColorScheme: Gruvbox
 >- Terminal emulator: Alacritty
->- Shell: zsh with oh-my-zsh
+>- Shell: zsh with oh-my-posh
 
 ## Installation
 
-Clone repo and use stow on the configs or run the basics.sh.
-
 ```bash
+nix-shell -p git vim 
+
 git clone https://github.com/rfcarreira/dotfiles
 
-stow alacritty nvim home # sh scripts/basics.sh
+NIX_CONFIG="experimental-features = nix-command flakes" 
+
+sudo nixos-rebuild switch --impure --flake .#<hostname>
 ```

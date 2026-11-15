@@ -4,6 +4,11 @@
         inherit pkgs;
         package = pkgs.rofi;
 
+        runtimePkgs = with pkgs; [
+          rofi-power-menu
+          rofi-file-browser
+        ];
+
         flags = {
           "-config" = ./config.rasi;
         };

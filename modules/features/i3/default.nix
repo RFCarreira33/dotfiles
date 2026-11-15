@@ -40,8 +40,6 @@
         runtimePkgs = with pkgs; [
           xrandr
           xclip
-          rofi-power-menu
-          rofi-file-browser
         ]
         ++ (with self'.packages; [
           rofi

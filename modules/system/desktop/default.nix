@@ -1,4 +1,4 @@
-{ self, inputs, ... }: {
+{ self, ... }: {
   flake.nixosModules.desktop =
     {
       pkgs,
@@ -14,7 +14,7 @@
         alacritty
         tmux
         sddm
-        stylix
+        theming
       ];
 
     in
@@ -31,8 +31,8 @@
       environment.systemPackages = with pkgs; [
         discord
         stremio-linux-shell
+        github-desktop
         gammastep
-        steam
       ];
     };
 }

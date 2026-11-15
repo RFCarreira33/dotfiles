@@ -1,0 +1,7 @@
+{
+  "tabWidth": 2,
+  "printWidth": 90,
+  "useTabs": false,
+  "proseWrap": "always",
+  "embeddedLanguageFormatting": "auto"
+}

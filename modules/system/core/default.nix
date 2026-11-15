@@ -11,6 +11,7 @@
         locale
         nix-settings
         zsh
+        git
       ];
     in
     {
@@ -22,7 +23,6 @@
       environment.systemPackages = with pkgs; [
         vim
         wget
-        git
         curlWithGnuTls
         usbutils
         lazygit

@@ -54,9 +54,9 @@
             vim = lib.getExe self'.packages.nvim;
             vi = lib.getExe self'.packages.nvim;
             dots = "cd ~/dotfiles && ${lib.getExe self'.packages.nvim}";
-            vimrc = "${lib.getExe self'.packages.nvim} ~/dotfiles/nvim/.config/nvim";
             rebuild = "sudo nixos-rebuild switch --impure --flake .";
             gc = "nix-collect-garbage -d";
+            neofetch = lib.getExe pkgs.fastfetch;
           };
         };
         ohMyPosh = inputs.wrapper-modules.wrappers.oh-my-posh.wrap {

@@ -15,6 +15,7 @@
         tmux
         sddm
         theming
+        spotify
       ];
 
     in
